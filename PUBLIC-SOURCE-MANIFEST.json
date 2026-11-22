@@ -119,6 +119,11 @@
       "sha256": "3b9cda672e0262bad6525aa6e16a65e8be8d863267460fc3cb114b005c155639"
     },
     {
+      "path": "desktop/RhodaLauncher.cs",
+      "bytes": 61782,
+      "sha256": "a2f2da4cf6d1c4b3f003284b6c2ffbfc74883dad94bf2c20758a8fec5dba657e"
+    },
+    {
       "path": "desktop/build-portable.ps1",
       "bytes": 11495,
       "sha256": "591791687ef2c1cda0a6530eb0012db8a36a665d0b1903a76cfd7370aa04ec16"
@@ -485,8 +490,8 @@
     },
     {
       "path": "scripts/export-public-source.mjs",
-      "bytes": 11134,
-      "sha256": "440a97f154559b4dd823cafe646b9966dd7a43aef386b6cd6f03772d92463774"
+      "bytes": 11141,
+      "sha256": "e478860c4aa02fc10c8d5fba615ef077b99257bd7b50b11b1f3f1946a2365f5d"
     },
     {
       "path": "scripts/generate-manifest.js",
@@ -1508,5 +1513,6 @@
       "bytes": 6033,
       "sha256": "5085a564c0f4f264517929e217125e29e4ee85680434896eb67d99c6d282e575"
     }
-  ]
+  ],
+  "hashRepresentation": "Prepared workspace bytes before Git text line-ending normalization"
 }

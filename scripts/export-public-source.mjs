@@ -31,7 +31,7 @@ await mkdir(destination);
 const sourceRoots = new Set(['src', 'server', 'API-control', 'desktop', 'scripts', 'ui', 'modules']);
 const rootFiles = new Set(['package.json', 'package-lock.json', 'tsconfig.json', 'vite.config.ts',
   '.gitignore', '.gitattributes', '.env.example', 'start.sh', 'PUBLIC-RELEASE.md', 'CONTRIBUTING.md', 'INSTRUMENT-TOURS.md']);
-const sourceExtensions = new Set(['.ts', '.tsx', '.js', '.mjs', '.cjs', '.py', '.css', '.html', '.uikitml', '.json', '.txt', '.ps1', '.cmd', '.sh']);
+const sourceExtensions = new Set(['.ts', '.tsx', '.js', '.mjs', '.cjs', '.py', '.cs', '.css', '.html', '.uikitml', '.json', '.txt', '.ps1', '.cmd', '.sh']);
 const publicExtensions = new Set(['.html', '.css', '.js', '.mjs', '.json', '.txt', '.md', '.png', '.jpg', '.jpeg', '.webp', '.svg', '.ico', '.woff', '.woff2', '.ttf', '.otf', '.ogg', '.wav', '.mp3', '.mp4', '.ktx2']);
 const allowedModelFiles = new Set(['public/gltf/lab-companion.glb', 'public/gltf/research-companion.glb',
   'public/gltf/companion-motions.glb', 'public/gltf/companion-walk.glb']);
