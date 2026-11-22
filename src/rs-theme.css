@@ -1,0 +1,217 @@
+/* RHODA's instrument-inspired system: technical navy, clear whites and a precise cyan signal accent. */
+body[data-rhoda-surface] {
+  --rhoda-navy: #092a49;
+  --rhoda-navy-soft: #123c60;
+  --rhoda-blue: #0078b7;
+  --rhoda-cyan: #00a2d1;
+  --rhoda-cyan-pale: #e7f6fb;
+  --rhoda-ink: #142e45;
+  --rhoda-muted: #53697c;
+  --rhoda-border: #cbd8e3;
+  --rhoda-ground: #eef3f7;
+  --rhoda-surface: #ffffff;
+  --bg: var(--rhoda-ground);
+  --surface: var(--rhoda-surface);
+  --surface2: #e9f0f5;
+  --border: var(--rhoda-border);
+  --text: var(--rhoda-ink);
+  --dim: var(--rhoda-muted);
+  --muted: var(--rhoda-muted);
+  --cyan: var(--rhoda-blue);
+  --cyan-light: var(--rhoda-cyan-pale);
+  --accent: var(--rhoda-cyan);
+  color-scheme: light;
+  color: var(--rhoda-ink);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  accent-color: var(--rhoda-blue);
+}
+
+body[data-rhoda-surface] a { color: var(--rhoda-blue); text-underline-offset: 3px; }
+body[data-rhoda-surface] a:hover { color: #005b8c; }
+body[data-rhoda-surface] nav a { border-radius: 7px; text-decoration: none; transition: background-color .16s ease, color .16s ease; }
+body[data-rhoda-surface] button,
+body[data-rhoda-surface] select,
+body[data-rhoda-surface] input:not([type="checkbox"]),
+body[data-rhoda-surface] textarea {
+  border-color: var(--rhoda-border);
+  border-radius: 8px;
+  color: var(--rhoda-ink);
+}
+body[data-rhoda-surface] button { transition: background-color .16s ease, border-color .16s ease, color .16s ease, box-shadow .16s ease, transform .16s ease; }
+body[data-rhoda-surface] button:hover:not(:disabled) { border-color: var(--rhoda-cyan); box-shadow: 0 3px 10px #092a4915; transform: translateY(-1px); }
+body[data-rhoda-surface] button:focus-visible,
+body[data-rhoda-surface] a:focus-visible,
+body[data-rhoda-surface] input:focus-visible,
+body[data-rhoda-surface] select:focus-visible,
+body[data-rhoda-surface] textarea:focus-visible,
+body[data-rhoda-surface] summary:focus-visible {
+  outline: 3px solid var(--rhoda-cyan);
+  outline-offset: 3px;
+}
+body[data-rhoda-surface] progress { accent-color: var(--rhoda-blue); }
+body[data-rhoda-surface] #lab-access { background: var(--rhoda-navy); color: #f2f8fc; border-color: #245879; }
+body[data-rhoda-surface] #lab-access button { background: #f4f9fc; color: var(--rhoda-navy); border-color: #a8c2d3; }
+body[data-rhoda-surface] #lab-access button:hover { background: #dff3fa; border-color: var(--rhoda-cyan); }
+body[data-rhoda-surface] #lab-sign-in { border-color: #a9c6d7; background: #fbfdff; color: var(--rhoda-ink); }
+body[data-rhoda-surface] #lab-sign-in h2 { color: var(--rhoda-navy); }
+body[data-rhoda-surface] #lab-sign-in label { color: var(--rhoda-muted); }
+body[data-rhoda-surface] #lab-login-submit { background: var(--rhoda-blue) !important; border-color: var(--rhoda-blue) !important; }
+body[data-rhoda-surface] .brand { color: var(--rhoda-navy); }
+body[data-rhoda-surface] .brand strong span { color: var(--rhoda-muted); }
+body[data-rhoda-surface] nav a[aria-current="page"],
+body[data-rhoda-surface] nav a.active { background: var(--rhoda-cyan-pale); color: var(--rhoda-navy); font-weight: 650; }
+body[data-rhoda-surface] nav a:hover { background: #d9edf5; color: var(--rhoda-navy); }
+body[data-rhoda-surface] .primary,
+body[data-rhoda-surface] .primary-action,
+body[data-rhoda-surface] #send,
+body[data-rhoda-surface] #lesson-read,
+body[data-rhoda-surface] #station-read,
+body[data-rhoda-surface] .btn-y {
+  background: var(--rhoda-blue);
+  border-color: var(--rhoda-blue);
+  color: #fff;
+}
+body[data-rhoda-surface] .primary:hover,
+body[data-rhoda-surface] .primary-action:hover,
+body[data-rhoda-surface] #send:hover,
+body[data-rhoda-surface] #lesson-read:hover,
+body[data-rhoda-surface] #station-read:hover,
+body[data-rhoda-surface] .btn-y:hover { background: #006597; border-color: #006597; color: #fff; }
+
+/* The studio's floating controls stay bright enough to read over the 3D room. */
+body[data-rhoda-surface="studio"] { background: #c9d8e2; }
+body[data-rhoda-surface="studio"] #xr-shell > header {
+  background: rgb(250 252 254 / 96%);
+  border: 1px solid #dce7ef;
+  box-shadow: 0 8px 30px #092a4922;
+}
+body[data-rhoda-surface="studio"] .console {
+  background: rgb(250 252 254 / 97%);
+  border: 1px solid #dce7ef;
+  box-shadow: 0 16px 40px #092a492d;
+  scrollbar-color: #9bb8cb transparent;
+}
+body[data-rhoda-surface="studio"] .eyebrow,
+body[data-rhoda-surface="studio"] #xr-status,
+body[data-rhoda-surface="studio"] #lesson-count { color: var(--rhoda-blue); }
+body[data-rhoda-surface="studio"] .section-number { color: var(--rhoda-blue); background: var(--rhoda-cyan-pale); }
+body[data-rhoda-surface="studio"] #focus-view,
+body[data-rhoda-surface="studio"] footer,
+body[data-rhoda-surface="studio"] .scene-note { background: var(--rhoda-navy); }
+body[data-rhoda-surface="studio"] .view-buttons button[aria-pressed="true"],
+body[data-rhoda-surface="studio"] .station-reading-toolbar #station-read { background: var(--rhoda-blue); border-color: var(--rhoda-blue); }
+body[data-rhoda-surface="studio"] .live-dot { background: #40c9e8; }
+body[data-rhoda-surface="studio"] .control-section,
+body[data-rhoda-surface="studio"] details { border-color: #d5e1ea; }
+body[data-rhoda-surface="studio"] #station-dialog { background: #f7fafc; color: var(--rhoda-ink); border-color: #b7cad8; }
+body[data-rhoda-surface="studio"] .station-narrator { background: #eaf3f8; border-color: #cadce7; }
+
+/* Library cards, reader and guided steps use cool paper surfaces with blue navigation cues. */
+body[data-rhoda-surface="library"] { background: radial-gradient(ellipse at 90% 0, #dcecf4 0, transparent 42%), var(--rhoda-ground); }
+body[data-rhoda-surface="library"] > header { background: rgb(255 255 255 / 96%); border-bottom-color: var(--rhoda-border); box-shadow: 0 3px 18px #092a490b; }
+body[data-rhoda-surface="library"] main { color: var(--rhoda-ink); }
+body[data-rhoda-surface="library"] p,
+body[data-rhoda-surface="library"] .meta,
+body[data-rhoda-surface="library"] #status { color: var(--rhoda-muted); }
+body[data-rhoda-surface="library"] .badge,
+body[data-rhoda-surface="library"] .reader-eyebrow,
+body[data-rhoda-surface="library"] .library-stats strong { color: var(--rhoda-blue); }
+body[data-rhoda-surface="library"] .library-stats { border-left-color: var(--rhoda-border); }
+body[data-rhoda-surface="library"] .card,
+body[data-rhoda-surface="library"] #reader,
+body[data-rhoda-surface="library"] .study-overview,
+body[data-rhoda-surface="library"] .study-checklist,
+body[data-rhoda-surface="library"] .guided-walkthrough { border-color: #d2dee8; box-shadow: 0 5px 18px #092a4909; }
+body[data-rhoda-surface="library"] .card.selected,
+body[data-rhoda-surface="library"] .learning-grid > button[aria-pressed="true"] { border-color: var(--rhoda-cyan); box-shadow: 0 0 0 2px #00a2d122; }
+body[data-rhoda-surface="library"] .library-tabs button[aria-selected="true"] { border-bottom-color: var(--rhoda-blue); color: var(--rhoda-navy); }
+body[data-rhoda-surface="library"] .primary { background: var(--rhoda-blue); border-color: var(--rhoda-blue); }
+body[data-rhoda-surface="library"] .guided-walkthrough { background: linear-gradient(145deg, #eaf5fa, #fff 70%); }
+body[data-rhoda-surface="library"] .guided-walkthrough h3,
+body[data-rhoda-surface="library"] .guided-step h4 { color: var(--rhoda-navy); }
+body[data-rhoda-surface="library"] .guided-step { border-left-color: var(--rhoda-cyan); }
+body[data-rhoda-surface="library"] footer { border-top-color: var(--rhoda-border); color: var(--rhoda-muted); }
+
+/* Welcome surface and chat are the app's primary entry points. */
+body[data-rhoda-surface="home"] { background: radial-gradient(ellipse at 90% 0, #dcecf4 0, transparent 42%), var(--rhoda-ground); }
+body[data-rhoda-surface="home"] .desktop-header { border-bottom-color: var(--rhoda-border); }
+body[data-rhoda-surface="home"] .desktop-header nav a { color: var(--rhoda-muted); }
+body[data-rhoda-surface="home"] .desktop-header nav a[aria-current="page"] { background: var(--rhoda-cyan-pale); color: var(--rhoda-navy); }
+body[data-rhoda-surface="home"] .eyebrow { color: var(--rhoda-blue); }
+body[data-rhoda-surface="home"] .welcome-visual { border-color: #c6d9e6; background: linear-gradient(145deg, #fafdff, #e4f1f7); }
+body[data-rhoda-surface="home"] .readiness,
+body[data-rhoda-surface="home"] .workspace-card { border-color: #cbd9e5; background: #fff; }
+body[data-rhoda-surface="home"] .primary-action { background: var(--rhoda-navy); box-shadow: 0 5px 14px #092a491e; }
+body[data-rhoda-surface="home"] .primary-action:hover { background: var(--rhoda-blue); }
+body[data-rhoda-surface="home"] .secondary-action { border-color: #b9cbd9; background: #fff; color: var(--rhoda-navy); }
+body[data-rhoda-surface="home"] .workspace-card a { color: var(--rhoda-blue); }
+body[data-rhoda-surface="home"] .workspace-card { border-color: #d1dee8; transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease; }
+body[data-rhoda-surface="home"] .workspace-card:hover { transform: translateY(-2px); border-color: #8bcce1; box-shadow: 0 12px 30px #092a4914; }
+body[data-rhoda-surface="home"] .welcome-visual svg #signal-fade stop:first-child { stop-color: var(--rhoda-blue); }
+body[data-rhoda-surface="home"] .welcome-visual svg #signal-fade stop:last-child { stop-color: var(--rhoda-cyan); }
+
+body[data-rhoda-surface="chat"] { --blue: #006eab; --blue-light: #e8f4fa; --amber: #805500; --amber-light: #fff6e4; --purple: #6845a3; --purple-light: #f2edfa; --red: #b4232d; --red-light: #fff0f0; }
+body[data-rhoda-surface="chat"] .topbar { background: var(--rhoda-navy); border-color: #163f61; color: #edf7fc; }
+body[data-rhoda-surface="chat"] .topbar .logo { color: #fff; letter-spacing: 1.2px; }
+body[data-rhoda-surface="chat"] .topbar .indicator { color: #c6d8e6; }
+body[data-rhoda-surface="chat"] .topbar a,
+body[data-rhoda-surface="chat"] .topbar button { border-color: #40627e; color: #e4f3fb; border-radius: 6px; }
+body[data-rhoda-surface="chat"] .topbar a:hover,
+body[data-rhoda-surface="chat"] .topbar button:hover { background: #123c60; color: #fff; border-color: var(--rhoda-cyan); }
+body[data-rhoda-surface="chat"] .messages { background: #f1f5f8; }
+body[data-rhoda-surface="chat"] .msg { border-color: #d9e2ea; box-shadow: 0 3px 12px #092a490a; }
+body[data-rhoda-surface="chat"] .msg-user { background: #eaf4f9; border-color: #d1e5ef; }
+body[data-rhoda-surface="chat"] .input-area { background: #fff; }
+body[data-rhoda-surface="chat"] #input { background: #f7fafc; }
+body[data-rhoda-surface="chat"] .panel { border-left: 1px solid var(--rhoda-border); }
+
+/* The bench keeps its dark scope viewport; surrounding tools take the light measurement-lab palette. */
+body[data-rhoda-surface="practice"],
+body[data-rhoda-surface="spatial-bench"] { background: radial-gradient(ellipse at 90% 0, #dcecf4 0, transparent 45%), var(--rhoda-ground); }
+body[data-rhoda-surface="practice"] header,
+body[data-rhoda-surface="spatial-bench"] header { color: var(--rhoda-navy); }
+body[data-rhoda-surface="practice"] header p,
+body[data-rhoda-surface="spatial-bench"] header p,
+body[data-rhoda-surface="practice"] p,
+body[data-rhoda-surface="spatial-bench"] p { color: var(--rhoda-muted); }
+body[data-rhoda-surface="practice"] .tag,
+body[data-rhoda-surface="spatial-bench"] .tag { color: var(--rhoda-blue); }
+body[data-rhoda-surface="practice"] .panel,
+body[data-rhoda-surface="spatial-bench"] .panel { background: #fff; border-color: #cbd9e5; box-shadow: 0 6px 22px #092a490d; }
+body[data-rhoda-surface="practice"] label,
+body[data-rhoda-surface="spatial-bench"] label { color: var(--rhoda-muted); }
+body[data-rhoda-surface="practice"] select,
+body[data-rhoda-surface="practice"] input,
+body[data-rhoda-surface="practice"] button,
+body[data-rhoda-surface="spatial-bench"] select,
+body[data-rhoda-surface="spatial-bench"] input,
+body[data-rhoda-surface="spatial-bench"] button { background: #fff; color: var(--rhoda-ink); }
+body[data-rhoda-surface="practice"] .primary,
+body[data-rhoda-surface="spatial-bench"] .primary { background: var(--rhoda-blue); border-color: var(--rhoda-blue); color: #fff; }
+body[data-rhoda-surface="practice"] canvas,
+body[data-rhoda-surface="spatial-bench"] canvas { background: #081b2d; }
+body[data-rhoda-surface="practice"] #readout,
+body[data-rhoda-surface="spatial-bench"] #readout { color: #0083bd; }
+body[data-rhoda-surface="practice"] #measurement,
+body[data-rhoda-surface="spatial-bench"] #measurement { color: #006fa8; }
+body[data-rhoda-surface="spatial-bench"] #instrument-view { border: 1px solid #c6d7e3; background: #f7fafc !important; }
+body[data-rhoda-surface="spatial-bench"] #inspect-status { color: var(--rhoda-navy) !important; }
+body[data-rhoda-surface="practice"] .capture-card,
+body[data-rhoda-surface="spatial-bench"] .capture-card,
+body[data-rhoda-surface="practice"] .capture-table th,
+body[data-rhoda-surface="practice"] .capture-table td,
+body[data-rhoda-surface="spatial-bench"] .capture-table th,
+body[data-rhoda-surface="spatial-bench"] .capture-table td { border-color: var(--rhoda-border); }
+
+body[data-rhoda-surface="instructor"] nav { padding-bottom: 14px; border-bottom: 1px solid var(--rhoda-border); }
+body[data-rhoda-surface="instructor"] h1,
+body[data-rhoda-surface="instructor"] .stat { color: var(--rhoda-blue); }
+body[data-rhoda-surface="instructor"] .card { border-color: var(--rhoda-border); box-shadow: 0 5px 20px #092a490b; }
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-rhoda-surface] button,
+  body[data-rhoda-surface] nav a,
+  body[data-rhoda-surface="home"] .workspace-card { transition: none; }
+  body[data-rhoda-surface] button:hover:not(:disabled),
+  body[data-rhoda-surface="home"] .workspace-card:hover { transform: none; }
+}

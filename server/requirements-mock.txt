@@ -1,0 +1,3 @@
+# Small local simulator setup; no AI models or VISA drivers required.
+flask>=3.0,<4
+flask-cors>=4.0,<7

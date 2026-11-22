@@ -1,0 +1,99 @@
+/* Bench-specific layout keeps the learning studio and instrument tour independent. */
+.bench-heading { margin-bottom: 24px; align-items: center; }
+.bench-heading h1 { font-size: clamp(30px, 3vw, 43px); line-height: 1.15; margin: 12px 0; }
+.bench-heading p { font-size: 13px; margin: 0; }
+.bench-spec { padding-left: 20px; border-left: 2px solid #c8dfec; flex-shrink: 0; }
+.bench-spec b { font-size: 17px; color: #164960; }
+.bench-spec b span { display: block; font-size: 8px; letter-spacing: 1.8px; margin-top: 7px; color: #5c8196; }
+.bench-spec small { display: block; margin-top: 12px; font-size: 10px; color: #6a8797; }
+.bench-jumps { display: flex; gap: 8px; margin-bottom: 22px; flex-wrap: wrap; }
+.bench-jumps button { border: 1px solid #cfdee8; border-radius: 30px; padding: 8px 15px; background: #fff; color: #37677e; font-size: 11px; }
+.bench-jumps button:hover { background: #e7f4fc; border-color: #79badb; }
+#page-bench .bench-layout { grid-template-columns: minmax(0, 1fr) 306px; grid-template-areas: 'main controls'; gap: 20px; }
+#page-bench .bench-main { grid-area: main; }
+#bench-controls { grid-area: controls; position: static; padding: 23px 21px; }
+#bench-controls .frequency-pair { grid-template-columns: 1fr 1fr; gap: 10px; }
+#bench-controls input, #bench-controls select { font-size: 12px; }
+#bench-controls label { font-size: 11px; }
+#bench-controls .control-title h2 { font-size: 19px; }
+#bench-controls .control-title p { font-size: 11px; }
+#bench-controls .control-footnote { line-height: 1.7; color: #58758a; }
+#bench-controls .help-text { font-size: 11px; line-height: 1.8; }
+#bench-controls, #display-card, #bench-notes { scroll-margin-top: 24px; }
+#page-bench .card-toolbar { padding: 16px 20px; }
+#page-bench .section-label { font-size: 10px; letter-spacing: 1px; }
+#page-bench .status-badge { font-size: 9px; }
+#page-bench .trace-tab { padding: 9px 12px; font-size: 12px; }
+#page-bench .inline-label { font-size: 11px; }
+#page-bench .inline-label select { font-size: 11px; padding: 9px; }
+#page-bench .trace-toolbar { flex-wrap: wrap; padding: 15px 17px 10px; }
+#page-bench .small-button { font-size: 11px; min-height: 33px; }
+.trace-memory-tools { padding: 0 17px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.trace-memory-tools .text-button { padding: 5px; }
+.trace-key { margin-left: auto; display: flex; align-items: center; gap: 6px; color: #6b8495; font-size: 10px; }
+.trace-key i { width: 13px; height: 3px; background: #ad811b; }
+.trace-key .memory-key { background: repeating-linear-gradient(90deg, #b85bd2 0 4px, transparent 4px 6px); margin-left: 7px; }
+.memory-status { font-size: 10px; color: #5c798d; line-height: 1.7; margin: 10px 18px 13px; }
+.plot-range-note { margin: 0; padding: 12px 20px; background: #fff8e8; color: #7b5c21; border-top: 1px solid #eee2c7; font-size: 11px; line-height: 1.7; }
+#page-bench .display-footer { font-size: 9px; line-height: 1.7; padding: 14px 18px; flex-wrap: wrap; gap: 5px 18px; }
+#page-bench .plot-caption { position: static; display: flex; justify-content: center; font-size: 10px; line-height: 1.6; padding: 10px; background: #142a3a; border-radius: 0 0 6px 6px; }
+#page-bench .plot-caption svg { width: 13px; height: 13px; }
+.has-pending-setup .card-toolbar { background: #fffcf2; }
+.range-presets { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 19px; }
+.range-presets > span { width: 100%; color: #69889b; font-size: 9px; letter-spacing: 1px; margin-bottom: 3px; }
+.range-presets button { border: 1px solid #d8e6ed; border-radius: 5px; background: #f3f8fb; color: #306b8a; font-size: 10px; padding: 7px 9px; }
+.range-presets button:hover { background: #e5f3fc; border-color: #a2cbe1; }
+#page-bench .marker-card { padding: 21px; }
+#page-bench .marker-heading b { font-size: 15px; }
+#page-bench .marker-heading small, #page-bench .marker-heading label { font-size: 11px; }
+#page-bench .marker-search { align-items: center; flex-wrap: wrap; gap: 12px; }
+#page-bench .marker-search .text-button { font-size: 11px; }
+#page-bench .secondary-marker-tools { flex-wrap: wrap; }
+#page-bench .secondary-marker-tools > button, #page-bench .secondary-marker-tools label { font-size: 11px; }
+#page-bench .readout-grid small { font-size: 9px; letter-spacing: .5px; }
+#page-bench .readout-grid strong { font-size: clamp(16px, 1.6vw, 23px); }
+.memory-comparison { margin-top: 16px; padding: 13px 15px; background: #f8f2fc; border-left: 3px solid #ae78bf; color: #76528a; font-size: 12px; line-height: 1.8; }
+.marker-range-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; border-top: 1px solid #e4edf2; margin-top: 20px; padding-top: 15px; }
+.marker-range-tools > span { width: 100%; color: #7290a2; font-size: 9px; letter-spacing: 1px; }
+.marker-range-tools > small { width: 100%; color: #6f8796; font-size: 10px; line-height: 1.7; }
+.insight-readout, #passband-readout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 14px; }
+.insight-readout small, #page-bench #passband-readout small { display: block; font-size: 9px; letter-spacing: .6px; color: #6e8d9f; margin-bottom: 8px; }
+.insight-readout strong, #page-bench #passband-readout strong { font-size: 18px; color: #256480; font-weight: 500; }
+#page-bench .network-insights > p { font-size: 11px; line-height: 1.85; }
+#page-bench .connection-title p, #page-bench .connection-note { font-size: 11px; line-height: 1.8; }
+.reconnect-dut { margin-top: 18px; background: #eaf6f7; border-color: #b9dadb; }
+#page-bench .simulation-disclaimer { font-size: 11px; }
+@media(min-width:1550px) { .insight-readout, #passband-readout { grid-template-columns: repeat(4,minmax(0,1fr)); } }
+@media(max-width:1100px) {
+  #page-bench .bench-layout { grid-template-columns: minmax(0, 1fr) 278px; gap: 16px; }
+  #bench-controls { padding: 20px 16px; }
+  .bench-spec { display: none; }
+}
+@media(max-width:1000px) {
+  #page-bench .bench-layout { display: flex; flex-direction: column; }
+  #bench-controls { order: -1; width: 100%; }
+  #page-bench .bench-main { width: 100%; }
+  #bench-controls .frequency-pair, #bench-controls .field-pair { gap: 16px; }
+  #bench-controls .control-title { margin-bottom: 15px; }
+  #bench-controls .control-tabs { margin: 15px 0; }
+  #bench-controls .export-button { display: inline-flex; width: auto; margin-right: 12px; }
+  #bench-controls .control-divider { margin: 17px 0; }
+  .trace-key { margin-left: 0; }
+}
+@media(max-width:700px) {
+  .bench-heading h1 { font-size: 31px; }
+  .bench-heading .eyebrow { font-size: 8px; }
+  .bench-heading p { font-size: 12px; line-height: 1.8; }
+  .bench-heading { margin-bottom: 18px; }
+  #bench-controls, #display-card, #bench-notes { scroll-margin-top: 128px; }
+  #page-bench .trace-toolbar { padding: 13px; }
+  .trace-memory-tools { padding: 0 13px; }
+  #page-bench .marker-card { padding: 17px; }
+  #page-bench .readout-grid strong { font-size: 19px; }
+  #page-bench .secondary-marker-tools label { width: 100%; justify-content: space-between; }
+  .trace-key { width: 100%; margin-top: 5px; }
+  .memory-status { margin-left: 13px; margin-right: 13px; }
+  #page-bench .plot-caption { position: static; display: flex; background: #142a3a; padding: 12px; line-height: 1.5; font-size: 10px; border-radius: 0 0 6px 6px; }
+  #page-bench .plot-caption svg { width: 13px; height: 13px; }
+  #bench-controls .export-button { display: flex; width: 100%; }
+}

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0078b8">
+  <meta name="description" content="Explore the RHODA oscilloscope and ZNLE6 VNA teaching models in one instrument workspace.">
+  <title>RHODA · Instrument tours</title>
+  <link rel="icon" type="image/png" href="/assets/rhoda-rs-icon.png">
+  <link rel="stylesheet" href="/src/rs-theme.css">
+  <link rel="stylesheet" href="/src/instrumentTours.css">
+</head>
+<body data-rhoda-surface="instrument-tours">
+  <a class="tour-skip" href="#tour-workspace">Skip to instrument tours</a>
+  <div class="tour-shell">
+    <header class="tour-header">
+      <a class="tour-brand" href="desktop.html" aria-label="RHODA home"><img src="/assets/rhoda-rs-icon.png" alt=""><span>RHODA<small>RF LEARNING LAB</small></span></a>
+      <nav aria-label="Workspace"><a href="desktop.html">Home</a><a href="index.html">Spatial studio</a><a href="instruments.html" aria-current="page">Instrument tours</a><a href="practice.html">Scope practice</a><a href="library.html">Resources</a><a href="chat.html">Chat</a></nav>
+    </header>
+    <main id="tour-workspace" tabindex="-1">
+      <div class="tour-heading"><div><span class="tour-eyebrow">ORIENT / EXPLORE / PRACTISE</span><h1>Meet your lab instruments<span>.</span></h1><p>Choose a model. Inspect its controls, follow an explanation and open its practice tools.</p></div><span class="tour-badge">TWO INSTRUMENTS · ONE WORKSPACE</span></div>
+      <div class="tour-picker" role="tablist" aria-label="Choose an instrument">
+        <button type="button" id="tour-tab-scope" role="tab" aria-selected="true" aria-controls="tour-panel" data-instrument="scope"><svg aria-hidden="true" viewBox="0 0 56 44"><rect x="3" y="4" width="50" height="34" rx="4"/><path d="M8 10h29v22H8zM10 22h5l3-8 5 14 4-8h8M43 12h4m-4 7h4m-4 8h4M10 41v-3m35 3v-3"/></svg><span><small>VOLTAGE OVER TIME</small><strong>Oscilloscope</strong><em>RTB24 reference · waveform and panel controls</em></span><span class="tour-picker-arrow" aria-hidden="true">↗</span></button>
+        <button type="button" id="tour-tab-vna" role="tab" aria-selected="false" aria-controls="tour-panel" tabindex="-1" data-instrument="vna"><svg aria-hidden="true" viewBox="0 0 56 44"><rect x="3" y="4" width="50" height="34" rx="4"/><path d="M8 10h28v21H8zM10 27c10-19 11-16 15-7s7 5 9 6M41 11h2m4 0h2m-8 6h2m4 0h2"/><circle cx="43" cy="26" r="3"/><circle cx="40" cy="34" r="1"/><circle cx="48" cy="34" r="1"/></svg><span><small>RESPONSE OVER FREQUENCY</small><strong>Vector network analyzer</strong><em>ZNLE6 reference · S-parameters and calibration</em></span><span class="tour-picker-arrow" aria-hidden="true">↗</span></button>
+      </div>
+      <section id="tour-panel" class="tour-panel" role="tabpanel" aria-labelledby="tour-tab-scope">
+        <div class="tour-viewer-heading"><div><span class="tour-eyebrow" id="tour-kind">OSCILLOSCOPE TEACHING MODEL</span><h2 id="tour-title">Oscilloscope · RTB24 reference</h2><p id="tour-description">Explore the scope’s front panel and rear connections. Its training controls use the local RHODA simulator; a live service is needed for measurements.</p></div><div class="tour-viewer-actions"><a id="tour-open" href="spatial-bench.html">Open full workspace ↗</a><button type="button" id="tour-reload">Reload viewer</button></div></div>
+        <p id="tour-status" class="tour-status" role="status" aria-live="polite">Preparing the oscilloscope viewer…</p>
+        <div id="tour-viewport" class="tour-viewport" aria-busy="true"></div>
+      </section>
+      <aside class="tour-limits"><strong>Explore before the real lab.</strong><p>Both models are educational reconstructions, not manufacturer CAD or firmware. The oscilloscope uses RHODA’s existing preview-and-approval workflow. The VNA generates its own synthetic responses and does not connect to equipment. Switching instruments reloads that workspace; export in-page notes and captures first. Use the full workspace link whenever you want more room.</p></aside>
+      <noscript><p>JavaScript is needed to switch instruments. You can still open the <a href="spatial-bench.html">oscilloscope workspace</a> or the <a href="learning/vna/index.html?page=instrument">VNA workspace</a> directly.</p></noscript>
+    </main>
+    <footer class="tour-footer"><span>RHODA / INSTRUMENT TOURS</span><span>Independent educational project · no hardware connection from this gallery</span></footer>
+  </div>
+  <script type="module" src="/src/instrumentTours.ts"></script>
+</body>
+</html>

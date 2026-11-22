@@ -1,0 +1,54 @@
+/** Authentication transport and local-principal isolation with inert network/storage. */
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import ts from 'typescript';
+async function moduleFrom(path,replace=s=>s){const source=replace(await readFile(new URL(path,import.meta.url),'utf8'));const code=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2020}}).outputText;return import('data:text/javascript;base64,'+Buffer.from(code).toString('base64'));}
+globalThis.window=new EventTarget();globalThis.location={pathname:'/test'};
+const records=new Map();globalThis.localStorage={getItem:k=>records.get(k)??null,setItem:(k,v)=>records.set(k,String(v)),key:i=>[...records.keys()][i],get length(){return records.size;}};
+const {LabAccessClient,validateAccessStatus}=await moduleFrom('../src/labAccess.ts',s=>s.replace("import { BACKEND } from './runtimeConfig';","const BACKEND='http://inert.invalid';"));
+const permissions={readJournal:true,writeJournal:true,operateInstrument:true,inspectAllSessions:false,manageUsers:false};
+const offline={enabled:false,authenticated:false,user:null,csrfToken:null,sessionId:null,permissions,expiresAt:null};
+const signedout={...offline,enabled:true,permissions:{...permissions,readJournal:false,writeJournal:false,operateInstrument:false}};
+const account=(username,id='session_server')=>({enabled:true,authenticated:true,user:{username,role:'operator'},csrfToken:'inert-csrf-value-at-least-32-characters',sessionId:id,permissions,expiresAt:new Date(Date.now()+60000).toISOString()});
+validateAccessStatus(offline);validateAccessStatus(account('alice'));
+for(const bad of [null,{}, {...account('alice'),sessionId:'bad\nID'}, {...account('alice'),csrfToken:null}, {...signedout,user:{username:'alice',role:'admin'}}, {...offline,authenticated:true}, {...account('alice'),permissions:{}}])assert.throws(()=>validateAccessStatus(bad));
+let remote=signedout,posts=[],reads=0,statusResolve;
+globalThis.fetch=async(url,options)=>{if(url.endsWith('/status')){reads++;if(statusResolve===true)return await new Promise(resolve=>{statusResolve=()=>resolve(new Response(JSON.stringify(remote)));});return new Response(JSON.stringify(remote));}posts.push({url,...options,body:JSON.parse(options.body)});if(url.endsWith('/login'))remote=account(options.body.includes('alice')?'alice':'bob');if(url.endsWith('/logout'))remote=signedout;if(url.endsWith('/session')){remote=account('alice','session_next');return new Response(JSON.stringify({sessionId:remote.sessionId}));}return new Response('{"ok":true}');};
+const notices=[],client=new LabAccessClient('http://inert.invalid',s=>notices.push(s));
+const parallel=await Promise.all([client.refresh(),client.refresh()]);assert.equal(reads,1);assert.equal(parallel[0].enabled,true);
+await client.login(' alice ','password-not-stored');assert.equal(client.snapshot().user.username,'alice');assert.deepEqual(posts[0].body,{username:'alice',password:'password-not-stored'});assert.equal(posts[0].credentials,'include');
+await client.newSession();assert.equal(client.snapshot().sessionId,'session_next');assert.equal(posts.at(-1).headers['X-Rhoda-CSRF'],remote.csrfToken);
+await client.logout();assert.equal(client.snapshot().authenticated,false);assert.equal(posts.at(-1).headers['X-Rhoda-CSRF'],'inert-csrf-value-at-least-32-characters');assert.equal(records.size,0,'Credentials/tokens are never persisted');
+client.invalidate();statusResolve=true;const pending=client.refresh();await new Promise(r=>setTimeout(r,0));client.invalidate();statusResolve();await assert.rejects(pending,/changed while reconnecting/);statusResolve=null;
+console.log('PASS status validation, deduplicated refresh, in-memory sign-in, server session rotation, CSRF logout and stale status rejection.');
+
+globalThis.transportClient=client;
+const {labFetch}=await moduleFrom('../src/authRequest.ts',s=>s.replace("import { labAccess } from './labAccess';","const labAccess=globalThis.transportClient;"));
+remote=account('alice');await client.refresh(true);let requestCount=0,requestOptions;
+globalThis.fetch=async(_url,options)=>{requestCount++;requestOptions=options;return new Response('{"ok":true}');};
+await labFetch('http://inert.invalid/api/instrument/set',{method:'POST',headers:{'X-Rhoda-Session':'session_server'},body:'{}'});
+assert.equal(requestOptions.headers['X-Rhoda-CSRF'],remote.csrfToken);assert.equal(requestOptions.headers['X-Rhoda-Session'],'session_server');assert.equal(requestOptions.credentials,'include');
+await labFetch('http://inert.invalid/api/library/documents');assert.equal(requestOptions.headers['X-Rhoda-CSRF'],undefined);
+const before=requestCount;globalThis.fetch=async(url)=>{requestCount++;return url.endsWith('/status')?new Response(JSON.stringify(signedout)):new Response('{"error":"Sign in"}',{status:401});};
+assert.equal((await labFetch('http://inert.invalid/api/instrument/set',{method:'POST',body:'{}'})).status,401);await new Promise(r=>setTimeout(r,0));assert.equal(requestCount-before,2,'401 checks status but never replays a write');
+remote=account('alice');globalThis.fetch=async()=>new Response(JSON.stringify(remote));await client.refresh(true);
+globalThis.fetch=async()=>{client.invalidate();return new Response('{"private":"old account"}');};await assert.rejects(labFetch('http://inert.invalid/api/session/logs'),/changed during this request/);
+console.log('PASS authenticated request credentials/CSRF, header preservation, read requests, no write replay and delayed account-change rejection.');
+
+let access=offline;
+globalThis.accessTest={getLabAccess:()=>access,ensureLabAccess:async()=>access,labAccess:{newSession:async()=>{access=account(access.user.username,'session_rotated');window.dispatchEvent(new Event('rhoda-access-updated'));return access;}}};
+const originalInterval=globalThis.setInterval;globalThis.setInterval=()=>0;
+const journalPosts=[];globalThis.fetch=async(_url,options)=>{journalPosts.push(JSON.parse(options.body));return new Response('{"ack":true}');};
+const {sessionLogger}=await moduleFrom('../src/session.ts',s=>s.replace("import { BACKEND } from './runtimeConfig';","const BACKEND='http://inert.invalid';").replace("import {labFetch} from './authRequest';","const labFetch=(...args)=>fetch(...args);").replace("import {getLabAccess,ensureLabAccess,labAccess} from './labAccess';","const {getLabAccess,ensureLabAccess,labAccess}=globalThis.accessTest;"));
+sessionLogger.logUserInput('Anonymous work');await sessionLogger.flush();const anonymousId=sessionLogger.getSessionId();
+access=account('alice','session_alice');window.dispatchEvent(new Event('rhoda-access-updated'));sessionLogger.logUserInput('Alice work');await sessionLogger.flush();assert.equal(sessionLogger.getSessionId(),'session_alice');assert.equal(sessionLogger.getAllLogs().some(e=>e.content==='Anonymous work'),false);
+localStorage.setItem('rhoda_active_session_v2',anonymousId);assert.equal(sessionLogger.getSessionId(),'session_alice','A local tab pointer cannot replace the server-owned active session');
+access=account('bob','session_bob');window.dispatchEvent(new Event('rhoda-access-updated'));sessionLogger.logUserInput('Bob work');await sessionLogger.flush();assert.equal(sessionLogger.getAllLogs().some(e=>e.content==='Alice work'),false);
+sessionLogger.logAssistantResponse('Delayed Alice reply',undefined,'session_alice');await sessionLogger.flush();assert.equal(journalPosts.some(e=>e.content==='Delayed Alice reply'),false,'Other account outbox stays local');
+access=signedout;window.dispatchEvent(new Event('rhoda-access-updated'));assert.equal(sessionLogger.getAllLogs().length,0);await sessionLogger.flush();
+access=account('alice','session_alice');window.dispatchEvent(new Event('rhoda-access-updated'));await new Promise(r=>setTimeout(r,0));await sessionLogger.flush();assert.equal(sessionLogger.getAllLogs().some(e=>e.content==='Delayed Alice reply'),true);assert.equal(journalPosts.some(e=>e.content==='Delayed Alice reply'),true);
+assert.throws(()=>sessionLogger.resetSession(),/Start New Session/);await sessionLogger.startNewSession();assert.equal(sessionLogger.getSessionId(),'session_rotated');
+assert.match(localStorage.getItem('rhoda-access-revision'),/^[A-Za-z0-9_-]+$/,'New Session broadcasts only an opaque revision notice');
+access=offline;window.dispatchEvent(new Event('rhoda-access-updated'));assert.equal(sessionLogger.getSessionId(),anonymousId);assert.equal(sessionLogger.getAllLogs().some(e=>e.content==='Anonymous work'),true);assert.equal(sessionLogger.getAllLogs().some(e=>e.content==='Bob work'),false);
+globalThis.setInterval=originalInterval;
+console.log('PASS principal-scoped local journals, delayed old-account outbox, signed-out privacy, server-owned New Session and preserved offline journal.');

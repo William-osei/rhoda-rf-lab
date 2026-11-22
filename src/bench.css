@@ -1,0 +1,11 @@
+textarea{width:100%;margin-top:6px;resize:vertical;font:inherit;border:1px solid #48627c;background:#172b42;color:#fff;border-radius:7px;padding:10px}
+.layout{grid-template-columns:minmax(0,1fr) 290px}
+.capture-card{border-top:1px solid #34485d;padding:12px 0}
+.capture-card h3{margin:6px 0;font-size:16px;overflow-wrap:anywhere}
+.capture-card p{white-space:pre-wrap;overflow-wrap:anywhere}
+.capture-table{border-collapse:collapse;width:100%;margin-top:18px;table-layout:fixed;font-size:13px}
+.capture-table caption{text-align:left;font-size:15px;font-weight:600;padding:8px 0;color:#e3ebf5}
+.capture-table th,.capture-table td{text-align:left;padding:9px 7px;border-bottom:1px solid #34485d;overflow-wrap:anywhere;vertical-align:top}
+#capture-comparison .row>label{flex:1;min-width:130px}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #79e2cb;outline-offset:3px}
+@media(max-width:800px){.layout{grid-template-columns:minmax(0,1fr)}header{flex-wrap:wrap}nav{line-height:1.8}}

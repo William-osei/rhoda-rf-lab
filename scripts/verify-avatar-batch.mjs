@@ -1,0 +1,23 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import ts from 'typescript';
+import * as THREE from 'three';
+const source=fs.readFileSync('src/rigidAvatarBatch.ts','utf8').replace("from 'three'",'from '+JSON.stringify(import.meta.resolve('three'))).replace("from 'three/examples/jsm/utils/BufferGeometryUtils.js'",'from '+JSON.stringify(import.meta.resolve('three/examples/jsm/utils/BufferGeometryUtils.js')));
+const code=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.ES2022,target:ts.ScriptTarget.ES2022}}).outputText;
+const {batchRigidAvatarParts}=await import('data:text/javascript;base64,'+Buffer.from(code).toString('base64'));
+const robot=new THREE.Group(),arm=new THREE.Group();arm.name='Animated arm';arm.position.set(.2,.8,0);robot.add(arm);
+const material=new THREE.MeshBasicMaterial(),shared=new THREE.BoxGeometry(.1,.3,.1),selected=()=>{};
+for(let i=0;i<3;i++){const part=new THREE.Mesh(shared,material);part.position.y=i*.3;part.rotation.z=i*.05;part.scale.x=1+i*.1;part.userData.onSelect=selected;part.userData.interactable=true;arm.add(part);}
+const eye=new THREE.Group();eye.name='Animated eye';eye.position.set(0,1,0);robot.add(eye);eye.add(new THREE.Mesh(shared,material));
+const min=new THREE.Box3().setFromObject(robot),triangles=3*shared.index.count/3;
+let disposed=false;shared.addEventListener('dispose',()=>disposed=true);
+batchRigidAvatarParts(robot);
+assert.equal(arm.children.length,1,'three static arm parts become one draw');
+assert.equal(eye.children.length,1,'eye animation group remains separate');
+assert.equal(arm.children[0].geometry.index.count/3,triangles,'surface triangles remain unchanged');
+assert.equal(arm.children[0].userData.onSelect,selected);assert(arm.children[0].userData.interactable,'batched parts remain selectable');
+assert.equal(disposed,false,'buffer still shared by an eye is not disposed');
+const after=new THREE.Box3().setFromObject(robot);assert(min.min.distanceTo(after.min)<1e-7&&min.max.distanceTo(after.max)<1e-7,'local shape and world bounds are preserved');
+arm.rotation.z=.6;robot.updateMatrixWorld(true);assert(new THREE.Box3().setFromObject(robot).max.distanceTo(after.max)>.05,'merged arm still follows its anatomical pivot');
+const ray=new THREE.Raycaster(new THREE.Vector3(0,1,1),new THREE.Vector3(0,0,-1));assert(ray.intersectObject(robot,true).length,'merged geometry retains raycasting');
+console.log('PASS rigid batching preserves surface geometry, bounds, separate animated joints, selection, raycasting and shared buffers');

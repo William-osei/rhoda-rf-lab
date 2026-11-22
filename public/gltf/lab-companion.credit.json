@@ -1,0 +1,106 @@
+{
+  "name": "Microsoft Rocketbox Medical_Male_01",
+  "creator": "Microsoft Rocketbox contributors",
+  "license": "MIT",
+  "licenseFile": "rocketbox-LICENSE.txt",
+  "repository": "https://github.com/microsoft/Microsoft-Rocketbox",
+  "revision": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+  "sourceBase": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/0943055db6ec570bcef9f2c8b41c9e5467c808f9/",
+  "sourceFiles": [
+    {
+      "path": "Assets/Avatars/Professions/Medical_Male_01/Textures/m152_body_color.tga",
+      "local": "m152_body_color.tga",
+      "bytes": 12582956,
+      "sha256": "717b4569cac7b96fc8eadc4de001156af9f86138f4cc80764d1642024e91c145"
+    },
+    {
+      "path": "Assets/Avatars/Professions/Medical_Male_01/Textures/m152_head_color.tga",
+      "local": "m152_head_color.tga",
+      "bytes": 12582956,
+      "sha256": "2422f9dacdbbe78a3c5ac2f593a541ab324ec41c8c65993f120a6864ab50c8f8"
+    },
+    {
+      "path": "Assets/Avatars/Professions/Medical_Male_01/Textures/m152_head_normal.tga",
+      "local": "m152_head_normal.tga",
+      "bytes": 12582956,
+      "sha256": "15c30dc6fe690d4779157f5ba1b76c60929e1992a47998cafe9750289f76f014"
+    },
+    {
+      "path": "Assets/Avatars/Professions/Medical_Male_01/Textures/m152_opacity_color.tga",
+      "local": "m152_opacity_color.tga",
+      "bytes": 4194348,
+      "sha256": "7793ea45a31c2153cf1ef7319ce67c60fd6c84d59767ceb3e9f7f88160a720d9"
+    },
+    {
+      "path": "Assets/Animations/all_animations_max_motextr_static/m_idle_breathe_01.max.fbx",
+      "local": "idle.fbx",
+      "bytes": 1397280,
+      "sha256": "281735704260d96e882d13e3c77d0ede00ed5d2e40805cd305000b3e5cbb1090"
+    },
+    {
+      "path": "Assets/Animations/all_animations_max_motextr_static/m_wave_01.max.fbx",
+      "local": "wave.fbx",
+      "bytes": 1424016,
+      "sha256": "42ec91d2f077fe02321b2e929d878b10ec86936c3c43d11310001050a4d79c73"
+    },
+    {
+      "path": "Assets/Animations/all_animations_max_motextr_xy/m_walk_neutral.max.fbx",
+      "local": "walk.fbx",
+      "bytes": 958512,
+      "sha256": "93089851a370e3a117a6bd04c002815f7133fce41c6271e9eb448ca1228b154f"
+    },
+    {
+      "path": "Assets/Avatars/Professions/Medical_Male_01/Export/Medical_Male_01_facial.fbx",
+      "local": "model.fbx",
+      "bytes": 1955968,
+      "sha256": "c91b819cecd68c806cc8e20a936ccd005cd0c6435cab06ab65769edf0992ae8d"
+    },
+    {
+      "path": "LICENSE.md",
+      "local": "LICENSE.md",
+      "bytes": 1066,
+      "sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352"
+    }
+  ],
+  "output": "lab-companion.glb",
+  "bytes": 2793820,
+  "sha256": "066e983ff76ae61e3ca9c310e85342bcb3e6f076603d61bf854df0c5b17f762b",
+  "conversion": {
+    "tools": "Three.js FBXLoader/GLTFExporter; glTF Transform; Pillow",
+    "textures": "Diffuse JPG at 1024, head normal PNG at 1024, hair alpha PNG at 512; FBX image origin flipped for glTF. No purchased textures.",
+    "geometry": "7581 triangles; indexed; sub-micron FBX morph noise zeroed before sparse storage.",
+    "facialTargets": "52 ARKit plus 15 visemes retained; duplicate FACS/VR sets omitted.",
+    "animations": "Native male breathe, neutral walk and wave; only matching bone rotation tracks, never source bone translations/scales or extraction-helper travel.",
+    "materials": "Phong assets converted to nonmetallic rough PBR; alpha cutout for hair.",
+    "reproduce": "python scripts/prepare-rocketbox-companion.py then node scripts/build-rocketbox-companion.mjs"
+  },
+  "animations": [
+    {
+      "name": "Idle_Subtle",
+      "duration": 2.7333333492279053,
+      "tracks": 81
+    },
+    {
+      "name": "Walk",
+      "duration": 1.0666667222976685,
+      "tracks": 81
+    },
+    {
+      "name": "Greeting",
+      "duration": 2.8333332538604736,
+      "tracks": 81
+    }
+  ],
+  "boundaries": [
+    "Speech-state mouth envelope is illustrative, not phonetic alignment.",
+    "No headset, hand tracking or physical microphone/audio verification.",
+    "Existing Rhoda and lightweight CC0 fallback assets are preserved."
+  ],
+  "attribution": {
+    "copyright": "Copyright (c) 2020 Microsoft",
+    "originalAvatarCreation": "Markus Wojcik - Rocketbox original avatar creation team",
+    "facialBlendshapes": "Matias Volonte; Fang Ma",
+    "researchReference": "https://doi.org/10.3389/frvir.2020.561558",
+    "primaryCreditSource": "https://github.com/microsoft/Microsoft-Rocketbox#contributors"
+  }
+}

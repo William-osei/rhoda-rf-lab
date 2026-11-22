@@ -1,0 +1,16 @@
+{
+  "name": "Male 10",
+  "author": "Elbolilloduro",
+  "sourceCharacter": "https://elbolilloduro.itch.io/characters-psx",
+  "license": "CC0-1.0",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "download": "https://raw.githubusercontent.com/Mesh2Motion/mesh2motion-app/79f3f61a9852ef70234a5a4a7c13ed87f7a71833/static/models-variation/human/male_10.glb",
+  "adaptation": "Human rig adaptation by Mesh2Motion; normalized to 1.68 m by RHODA. Original character materials preserved.",
+  "sha256": "0e828bfd649692b3c106688845453c886cf7c3d26cf7c24c9d976df8a54a2e21",
+  "motionSource": "https://raw.githubusercontent.com/Mesh2Motion/mesh2motion-app/79f3f61a9852ef70234a5a4a7c13ed87f7a71833/static/animations/human-addon-animations.glb",
+  "motionLicense": "CC0-1.0",
+  "motionAuthors": "Mesh2Motion / Scott Petrovic; Quaternius",
+  "motionAdaptation": "Only Idle_Subtle and Greeting clips retained; unused geometry and animation data removed.",
+  "walkingMotionSource": "https://raw.githubusercontent.com/Mesh2Motion/mesh2motion-app/79f3f61a9852ef70234a5a4a7c13ed87f7a71833/static/animations/human-base-animations.glb",
+  "walkingAdaptation": "Walk clip only; translation tracks excluded at runtime for in-place navigation."
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rhoda — Instructor Dashboard</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0d1117; --surface: #161b22; --border: #30363d;
+      --text: #e6edf3; --muted: #8b949e; --accent: #00d4aa;
+      --danger: #f85149; --warn: #d29922;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); padding: 24px; }
+    h1 { font-size: 24px; color: var(--accent); margin-bottom: 4px; }
+    .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 24px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
+    .card h2 { font-size: 13px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; letter-spacing: 0.5px; }
+    .stat { font-size: 32px; font-weight: 700; color: var(--accent); }
+    .stat-label { font-size: 12px; color: var(--muted); }
+    .stat-row { display: flex; gap: 24px; margin-bottom: 12px; }
+    .stat-item { text-align: center; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th { text-align: left; color: var(--muted); border-bottom: 1px solid var(--border); padding: 8px 12px; font-weight: 600; }
+    td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+    tr:hover td { background: #ffffff08; }
+    .badge { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 3px; }
+    .badge-error { background: #f8514933; color: var(--danger); }
+    .badge-fault { background: #d2992233; color: var(--warn); }
+    .badge-ok { background: #00d4aa33; color: var(--accent); }
+    .topic-bar { margin-bottom: 8px; }
+    .topic-bar .label { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); }
+    .topic-bar .bar { height: 6px; background: var(--border); border-radius: 3px; margin-top: 3px; }
+    .topic-bar .fill { height: 100%; background: var(--accent); border-radius: 3px; }
+    .transcript { max-height: 400px; overflow-y: auto; font-family: monospace; font-size: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 12px; white-space: pre-wrap; }
+    .log-user { color: #79c0ff; }
+    .log-assistant { color: var(--accent); }
+    .log-system { color: var(--warn); }
+    .log-tool { color: #d2a8ff; }
+    body[data-rhoda-surface="instructor"] .transcript { font-size: 13px; line-height: 1.6; }
+    body[data-rhoda-surface="instructor"] .log-user { color: #176091; }
+    body[data-rhoda-surface="instructor"] .log-assistant { color: #00706d; }
+    body[data-rhoda-surface="instructor"] .log-system { color: #825400; }
+    body[data-rhoda-surface="instructor"] .log-tool { color: #6d3e9a; }
+    button { padding: 8px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text); cursor: pointer; font-size: 13px; }
+    button:hover { border-color: var(--accent); }
+    .actions { margin-bottom: 16px; display: flex; gap: 8px; }
+    .actions button { min-height: 44px; }
+    #status { color: var(--muted); font-size: 12px; margin-left: auto; }
+    .session-review { margin-bottom: 16px; }
+    .session-review label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+    .session-review select { width: 100%; max-width: 850px; min-height: 44px; padding: 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); font: inherit; }
+    .session-context { margin-top: 10px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .authored-review { margin-bottom:16px; line-height:1.6; }
+    .authored-review label { display:block; margin-top:12px; font-weight:600; }
+    .authored-review textarea,.authored-review select,.authored-review input[type="file"] { width:100%; max-width:100%; min-height:44px; font:inherit; color:var(--text); background:var(--bg); border:1px solid var(--border); border-radius:6px; padding:10px; }
+    .authored-review textarea { resize:vertical; min-height:150px; }
+    .authored-review .actions { margin-top:14px; }
+    .authored-review pre { max-height:260px; overflow:auto; white-space:pre-wrap; overflow-wrap:anywhere; padding:12px; border:1px solid var(--border); border-radius:6px; font-size:13px; }
+    .authored-review h3,.authored-review h4 { margin:18px 0 8px; }
+    .authored-review ul,.authored-review ol { padding-left:24px; }
+    .authored-review li { margin:10px 0; }
+    .authored-review textarea:focus-visible,.authored-review select:focus-visible,.authored-review input:focus-visible,.authored-review summary:focus-visible,.authored-review pre:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+    .ai-review-consent { display:flex!important; gap:10px; align-items:flex-start; font-weight:400!important; }
+    .ai-review-consent input { flex:0 0 auto; width:22px; height:22px; margin-top:3px; }
+    #ai-review-output { white-space:pre-wrap; overflow-wrap:anywhere; font:inherit; line-height:1.7; max-height:none; }
+    nav { margin-bottom: 20px; font-size: 13px; } a { color: var(--accent); } button:focus-visible,a:focus-visible,#transcript:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; } button:disabled { opacity: .55; cursor: wait; } .empty-records { color:var(--muted); font-size:12px; } .actions { flex-wrap: wrap; align-items:center; } #status { max-width: 650px; line-height:1.6; } .card { min-width:0; overflow-wrap:anywhere; } .transcript { overflow-wrap:anywhere; } @media(max-width:600px) { body { padding:16px; } .grid { grid-template-columns:minmax(0,1fr); } .stat-row { gap:18px; } .stat { font-size:26px; } #status { margin-left:0; width:100%; } }
+  </style>
+  <link rel="stylesheet" href="/src/rs-theme.css" />
+</head>
+<body data-rhoda-surface="instructor">
+  <nav aria-label="Workspace"><a href="./">Spatial studio</a> · <a href="chat.html">Chat</a> · <a href="library.html">Resources</a> · <a href="spatial-bench.html">Practice bench</a></nav><main><h1>Instructor Dashboard</h1>
+  <p class="subtitle">Rhoda — R&S Virtual Lab Assistant Session Analytics</p>
+  <section class="card session-review" aria-label="Session review">
+    <label for="review-session">Review session</label>
+    <select id="review-session" aria-describedby="session-context" disabled><option value="">All accessible sessions</option></select>
+    <p id="session-context" class="session-context">Loading available sessions…</p>
+  </section>
+  <div class="actions">
+    <button id="refresh-records">Refresh</button>
+    <button id="export-all" disabled>Export all accessible transcripts</button>
+    <span id="status" role="status">Loading records…</span>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <h2>Session Overview</h2>
+      <div class="stat-row">
+        <div class="stat-item"><div class="stat" id="total-turns">—</div><div class="stat-label">Total Turns</div></div>
+        <div class="stat-item"><div class="stat" id="total-logs">—</div><div class="stat-label">Log Events</div></div>
+        <div class="stat-item"><div class="stat" id="total-errors">—</div><div class="stat-label">Errors</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Topic Activity</h2>
+      <div id="progress-bars"></div>
+    </div>
+    <div class="card">
+      <h2>Common Failure Points</h2>
+      <div id="failure-list"></div>
+    </div>
+    <div class="card">
+      <h2>Recommended Next Topic</h2><p>Activity suggestions are based on logged keywords, not a proficiency assessment.</p>
+      <div id="next-topic" style="font-size:18px;color:var(--accent);margin-top:8px">—</div>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:16px">
+    <h2>Session Transcript</h2>
+    <div class="transcript" id="transcript" role="region" tabindex="0" aria-label="Session transcript">Loading...</div>
+  </div>
+
+  <section class="card authored-review" id="authored-review" aria-labelledby="authored-review-title">
+    <h2 id="authored-review-title">Authored session checklist</h2>
+    <p>Prepare practical follow-up guidance from a session log using built-in teaching rules. This is an authored checklist for an instructor, not AI output, a grade or a proficiency assessment.</p>
+    <p class="session-context" id="authored-limits">UTF-8 TXT or JSON only · file limit 64 KiB · text limit 20,000 characters. Input and results stay on this page, are never sent to a model or saved, and clear when the session/account changes or the page closes.</p>
+    <div class="actions"><button id="authored-use-selection" type="button" disabled>Use selected session</button></div>
+    <p class="session-context">Select one recorded owner/session pair above to use its loaded records. The combined session view cannot be imported.</p>
+    <label for="authored-file">Import a session log</label>
+    <input id="authored-file" type="file" accept=".txt,.json,text/plain,application/json" aria-describedby="authored-limits" />
+    <label for="authored-log">Paste or edit a session log</label>
+    <textarea id="authored-log" rows="7" spellcheck="false" aria-describedby="authored-limits authored-input-count authored-source" placeholder="Paste a learning-session transcript or a supported JSON event log."></textarea>
+    <p id="authored-input-count" class="session-context">0 / 20,000 characters</p>
+    <p id="authored-source" class="session-context">No input selected.</p>
+    <label for="authored-format">Input format</label>
+    <select id="authored-format"><option value="auto">Detect text or JSON</option><option value="text">Plain text</option><option value="json">JSON event log</option></select>
+    <div class="actions">
+      <button id="authored-preview" type="button" disabled>Preview input</button>
+      <button id="authored-start" type="button" disabled>Start authored checklist</button>
+      <button id="authored-cancel" type="button" disabled>Cancel</button>
+      <button id="authored-clear" type="button" disabled>Clear input and results</button>
+    </div>
+    <p id="authored-status" role="status" class="session-context">Preview a log before starting. No model or network request is made by this checklist.</p>
+    <details open><summary>Exact text used by the checklist</summary><pre id="authored-input-preview" tabindex="0">Preview an input before starting the authored checklist.</pre></details>
+    <section id="authored-output" aria-label="Authored checklist result" hidden></section>
+  </section>
+
+  <section class="card authored-review" id="ai-review" aria-labelledby="ai-review-title">
+    <h2 id="ai-review-title">Optional AI instructor draft</h2>
+    <p>Ask Google Gemini for an optional teaching draft. AI can make mistakes; it cannot establish a learner's proficiency or replace instructor judgement. The local authored checklist above remains available for private logs without a model request.</p>
+    <p class="session-context" id="ai-review-limits">Check server availability to see which input mode is permitted. Free Gemini mode accepts only the public fictional examples supplied here; it cannot review actual learner logs. Private session review requires an administrator-approved paid API project. Your Gemini Pro app subscription does not pay for API requests. No automatic model request or retry is made.</p>
+    <div class="actions"><button id="ai-review-check" type="button">Check AI availability</button><button id="ai-review-use-preview" type="button" disabled>Use previewed log for AI</button></div>
+    <p id="ai-review-availability" role="status" class="session-context">AI availability has not been checked. No model request runs when this page opens.</p>
+    <div id="ai-review-synthetic-input" hidden>
+      <label for="ai-review-example">Public fictional teaching example</label>
+      <select id="ai-review-example" disabled aria-describedby="ai-review-limits"><option value="">Choose an example to preview</option></select>
+      <p class="session-context">Free mode cannot review actual learner logs. Only the exact public example below can be sent. The local authored checklist above can still review private text on this device.</p>
+    </div>
+    <div id="ai-review-private-input" hidden>
+      <label for="ai-review-log">Session text for the AI draft</label>
+      <textarea id="ai-review-log" rows="6" spellcheck="false" disabled aria-describedby="ai-review-limits ai-review-count" placeholder="Paste a single session log, or explicitly copy the exact preview from the authored checklist above."></textarea>
+      <p id="ai-review-count" class="session-context">0 / 20,000 characters · 0 / 20,000 UTF-8 bytes</p>
+      <div class="actions"><button id="ai-review-preview" type="button" disabled>Preview AI input</button></div>
+    </div>
+    <details open><summary>Exact text to send to Google</summary><pre id="ai-review-input-preview" tabindex="0">Check availability, then preview an allowed input before sending anything to Google.</pre></details>
+    <label class="ai-review-consent" for="ai-review-consent"><input id="ai-review-consent" type="checkbox" disabled aria-describedby="ai-review-limits" /><span id="ai-review-consent-text">Check availability and preview the allowed input before consenting.</span></label>
+    <div class="actions">
+      <button id="ai-review-start" type="button" disabled>Send to Gemini for draft</button>
+      <button id="ai-review-cancel" type="button" disabled>Stop AI review</button>
+      <button id="ai-review-clear" type="button" disabled>Clear AI input and draft</button>
+    </div>
+    <p id="ai-review-status" role="status" class="session-context">Preview and consent are required. No automatic model request or retry is made.</p>
+    <pre id="ai-review-output" role="region" aria-label="AI instructor draft" tabindex="0" hidden></pre>
+  </section>
+
+  </main>
+  <script type="module" src="/src/instructor.ts"></script>
+</body>
+</html>
+

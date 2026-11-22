@@ -1,0 +1,66 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import ts from 'typescript';
+
+// Exercise the pure persistence model without a browser, real speech or hardware.
+const source=fs.readFileSync(new URL('../src/lessonProgress.ts',import.meta.url),'utf8');
+const js=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2020}}).outputText;
+const {LessonProgress}=await import('data:text/javascript;base64,'+Buffer.from(js).toString('base64'));
+const values=new Map();
+const store={getItem:key=>values.get(key)||null,setItem:(key,value)=>values.set(key,value)};
+const progress=new LessonProgress(store);
+assert.equal(progress.completedCount('scope-tour',7),0);
+progress.savePosition('scope-tour',4);
+assert.equal(progress.position('scope-tour',7),4);
+assert.equal(progress.completedCount('scope-tour',7),0,'Visiting a part must not complete it');
+progress.complete('scope-tour',4,'reviewed');
+progress.complete('scope-tour',5,'listened');
+assert.equal(progress.completedCount('scope-tour',7),2);
+assert.equal(progress.completion('scope-tour',5),'listened');
+assert.match(progress.storageMessage,/saved on this device/);
+progress.savePosition('first-connection',2);
+assert.equal(progress.position('scope-tour',7),4);
+assert.equal(progress.completedCount('first-connection',6),0);
+
+const restored=new LessonProgress(store);
+assert.equal(restored.position('scope-tour',7),4);
+assert.equal(restored.position('first-connection',6),2);
+assert.equal(restored.completedCount('scope-tour',7),2);
+restored.clearCompletion('scope-tour',4);
+assert.equal(restored.completedCount('scope-tour',7),1);
+restored.savePosition('scope-tour',999);
+assert.equal(restored.position('scope-tour',7),6,'Stale positions must clamp to the current plan length');
+restored.savePosition('scope-tour',NaN);
+assert.equal(restored.position('scope-tour',7),6);
+restored.complete('scope-tour',-1,'reviewed');
+assert.equal(restored.completedCount('scope-tour',7),1);
+
+const corrupt=new LessonProgress({getItem:()=>'{bad',setItem:()=>{throw Error('blocked');}});
+corrupt.complete('scope-tour',0,'reviewed');
+assert.equal(corrupt.completedCount('scope-tour',7),1,'Blocked storage must not break the open study session');
+assert.match(corrupt.storageMessage,/open page only/);
+assert.match(corrupt.storageMessage,/reopening or reloading may reset/);
+const noStorage=new LessonProgress();
+noStorage.savePosition('scope-tour',3);
+assert.equal(noStorage.position('scope-tour',7),3);
+assert.match(noStorage.storageMessage,/open page only/);
+const blockedReads=new LessonProgress({getItem:()=>{throw Error('disabled');},setItem:()=>{throw Error('disabled');}});
+assert.match(blockedReads.storageMessage,/unavailable/);
+blockedReads.complete('scope-tour',1,'listened');
+assert.equal(blockedReads.completedCount('scope-tour',7),1);
+
+const filtered=new LessonProgress({getItem:()=>JSON.stringify({version:1,plans:{'scope-tour':{step:3,completed:{'0':'listened','-1':'reviewed','1':'visited','99':'reviewed'}}}}),setItem:()=>{}});
+assert.equal(filtered.completedCount('scope-tour',7),1,'Malformed and out-of-range completions must not count');
+assert.equal(filtered.position('scope-tour',7),3);
+let rejectWrites=false;
+const changingStorage=new LessonProgress({getItem:()=>null,setItem:()=>{if(rejectWrites)throw Error('quota');}});
+changingStorage.complete('scope-tour',0,'reviewed');
+assert.match(changingStorage.storageMessage,/saved on this device/);
+rejectWrites=true;
+changingStorage.complete('scope-tour',1,'listened');
+assert.equal(changingStorage.completedCount('scope-tour',7),2);
+assert.match(changingStorage.storageMessage,/open page only/,'Quota failure must immediately disclose session-only progress');
+rejectWrites=false;
+changingStorage.savePosition('scope-tour',2);
+assert.match(changingStorage.storageMessage,/saved on this device/,'A later successful save may restore persistence');
+console.log('PASS: per-plan resume; visiting versus completion; listened/reviewed/undo; reload; stale/corrupt storage; blocked reads/writes; unavailable/quota/recovered storage disclosure.');

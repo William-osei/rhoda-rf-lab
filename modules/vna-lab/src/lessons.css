@@ -1,0 +1,1355 @@
+.lesson-studio {
+  --ls-ink: #12394f;
+  --ls-muted: #5e798b;
+  --ls-blue: #007fbf;
+  --ls-rule: #dce7ed;
+  color: var(--ls-ink);
+}
+.lesson-studio button,
+.lesson-studio input,
+.lesson-studio select,
+.lesson-studio textarea {
+  font: inherit;
+}
+.lesson-studio button {
+  cursor: pointer;
+  transition:
+    background-color 0.16s,
+    border-color 0.16s,
+    box-shadow 0.16s;
+}
+.lesson-studio button:disabled {
+  cursor: default;
+  opacity: 0.43;
+}
+.lesson-studio svg {
+  display: block;
+}
+.lesson-studio button > svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+.lesson-studio [hidden] {
+  display: none !important;
+}
+.ls-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+  margin: 0 0 38px;
+}
+.ls-eyebrow {
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  line-height: 1.65;
+  font-weight: 750;
+  color: var(--ls-blue);
+}
+.ls-heading h1 {
+  margin: 15px 0 15px;
+  font-weight: 550;
+  font-size: clamp(32px, 3.15vw, 53px);
+  line-height: 1.08;
+  letter-spacing: -2px;
+}
+.ls-heading h1 > span {
+  color: #00a3b9;
+}
+.ls-heading > div > p {
+  margin: 0;
+  color: var(--ls-muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+.ls-course-summary {
+  flex: 0 0 213px;
+  padding: 21px 24px;
+  border: 1px solid #d7e5ec;
+  border-radius: 13px;
+  background: linear-gradient(140deg, #ffffffd0, #e9f3f9);
+}
+.ls-course-summary > b {
+  display: block;
+  font-size: 32px;
+  letter-spacing: -1px;
+  font-weight: 600;
+}
+.ls-course-summary > b > span {
+  font-size: 18px;
+  color: #7892a2;
+  font-weight: 400;
+}
+.ls-course-summary > small {
+  display: block;
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--ls-muted);
+}
+.ls-course-meter {
+  height: 4px;
+  background: #d6e4ec;
+  overflow: hidden;
+  border-radius: 4px;
+  margin: 13px 0 9px;
+}
+.ls-course-meter > span {
+  display: block;
+  height: 100%;
+  background: #079eaa;
+  border-radius: 4px;
+}
+.ls-layout {
+  display: grid;
+  grid-template-columns: 222px minmax(0, 1fr) 266px;
+  gap: 22px;
+  align-items: start;
+}
+.ls-path {
+  min-width: 0;
+}
+.ls-path-heading {
+  display: grid;
+  gap: 3px;
+  padding: 0 10px 17px;
+  border-bottom: 1px solid var(--ls-rule);
+  margin-bottom: 11px;
+}
+.ls-path-heading > span:last-child {
+  font-size: 11px;
+  color: var(--ls-muted);
+}
+.ls-lesson {
+  margin-bottom: 7px;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  overflow: hidden;
+}
+.ls-lesson.is-current {
+  background: #fff;
+  border-color: var(--ls-rule);
+  box-shadow: 0 5px 20px #0d486306;
+}
+.ls-lesson-button {
+  width: 100%;
+  background: transparent;
+  display: flex;
+  gap: 10px;
+  padding: 15px 10px;
+  text-align: left;
+  align-items: flex-start;
+  color: var(--ls-ink);
+}
+.ls-lesson-button:hover {
+  background: #eaf3f8;
+}
+.ls-lesson-number {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border: 1px solid #dce7ed;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 650;
+  color: #537589;
+  background: #f3f7fa;
+}
+.is-current .ls-lesson-number {
+  color: #fff;
+  background: var(--ls-blue);
+  border-color: var(--ls-blue);
+}
+.ls-lesson-button > span:nth-child(2) {
+  flex: 1;
+  min-width: 0;
+}
+.ls-lesson-button strong {
+  display: block;
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 650;
+}
+.ls-lesson-button small {
+  display: block;
+  color: #77909e;
+  font-size: 10px;
+  line-height: 1.6;
+  margin-top: 3px;
+}
+.ls-lesson-button > svg {
+  width: 12px !important;
+  height: 12px !important;
+  margin-top: 6px;
+}
+.is-current .ls-lesson-button > svg {
+  transform: rotate(90deg);
+}
+.ls-step-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 9px 12px;
+}
+.ls-step-list li + li {
+  margin-top: 3px;
+}
+.ls-step-list button {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  padding: 10px 9px;
+  gap: 9px;
+  color: #678191;
+  background: transparent;
+  text-align: left;
+  font-size: 11px;
+  line-height: 1.5;
+  border-radius: 7px;
+}
+.ls-step-list button:hover {
+  background: #f1f6f9;
+}
+.ls-step-list button.is-active {
+  background: #e9f4fb;
+  color: #006aa5;
+  font-weight: 650;
+}
+.ls-step-list button > span:first-child {
+  width: 17px;
+  height: 17px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 9px;
+  display: grid;
+  place-items: center;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+.ls-local-note {
+  font-size: 10px;
+  color: #7b909e;
+  line-height: 1.7;
+  padding: 12px 10px 0;
+}
+.ls-path-actions {
+  display: grid;
+  gap: 6px;
+  margin-top: 13px;
+}
+.ls-path-actions button {
+  border: 1px solid var(--ls-rule);
+  padding: 11px 10px;
+  font-size: 11px;
+  border-radius: 8px;
+  text-align: left;
+  background: #fff8;
+  color: #4c7187;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ls-path-actions button:hover {
+  background: #fff;
+  border-color: #9fc5da;
+}
+.ls-main {
+  min-width: 0;
+}
+.ls-step-card {
+  border: 1px solid var(--ls-rule);
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 7px 25px #154b6404;
+}
+.ls-step-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 24px 27px 16px;
+}
+.ls-step-top .ls-eyebrow {
+  font-size: 9px;
+  letter-spacing: 1.05px;
+  max-width: 75%;
+}
+.ls-step-counter {
+  white-space: nowrap;
+  font-size: 9px;
+  font-weight: 650;
+  color: #8b9eaa;
+}
+.ls-step-meter {
+  display: flex;
+  gap: 5px;
+  margin: 0 27px 25px;
+}
+.ls-step-meter > span {
+  display: block;
+  height: 3px;
+  flex: 1;
+  border-radius: 3px;
+  background: #e5edf2;
+}
+.ls-step-meter > span.is-filled {
+  background: #0495bc;
+}
+.ls-step-jump {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 10px;
+  color: #617d90;
+  margin: 0 27px 20px;
+}
+.ls-step-jump select {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #d4e3ed;
+  color: #426d85;
+  background: #f9fcfe;
+  border-radius: 7px;
+  padding: 9px;
+  font-size: 11px;
+}
+.ls-step-card > h2 {
+  margin: 0 27px 12px;
+  font-size: 26px;
+  line-height: 1.22;
+  letter-spacing: -0.75px;
+  font-weight: 600;
+  scroll-margin-top: 96px;
+}
+.ls-understand {
+  color: var(--ls-muted);
+  font-size: 13px;
+  line-height: 1.85;
+  margin: 0 27px 25px;
+}
+.ls-visual {
+  background: linear-gradient(150deg, #eff8fc, #f7fafc);
+  border-block: 1px solid #e1ecf2;
+  margin: 0;
+  padding: 17px 19px 13px;
+}
+.ls-visual-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin: 0 5px;
+}
+.ls-visual-header > span {
+  font-size: 10px;
+  font-weight: 650;
+  color: #496f86;
+}
+.ls-visual-header > button {
+  white-space: nowrap;
+  border: 1px solid #bed8e6;
+  border-radius: 6px;
+  background: #fff9;
+  padding: 7px 9px;
+  font-size: 10px;
+  color: #0075b0;
+}
+.ls-visual-header > button:hover {
+  background: #fff;
+}
+.ls-visual [data-ls-diagram] > svg {
+  width: 100%;
+  height: auto;
+  min-height: 160px;
+  max-height: 265px;
+}
+.ls-visual svg text {
+  fill: #637f92;
+  font-family:
+    Inter,
+    Segoe UI,
+    Arial,
+    sans-serif;
+  font-size: 15px;
+}
+.ls-visual svg text.ls-v-strong {
+  fill: #0872aa;
+  font-size: 16px;
+  font-weight: 650;
+}
+.ls-visual svg text.ls-v-large {
+  fill: #0b6a9d;
+  font-size: 23px;
+  font-weight: 600;
+}
+.ls-visual svg text.ls-v-white {
+  fill: #fff;
+  font-size: 19px;
+  font-weight: 650;
+}
+.ls-visual svg text.ls-v-warning {
+  fill: #a16b3a;
+}
+.ls-v-wire {
+  stroke: #8db7cc;
+  stroke-width: 3;
+  fill: none;
+}
+.ls-v-flow {
+  stroke: #078bbc;
+  stroke-width: 4;
+  stroke-dasharray: 9 10;
+  marker-end: url(#ls-v-arrow);
+}
+.ls-visual[data-playing='true'] .ls-v-flow {
+  animation: ls-travel 1.2s linear infinite;
+}
+.ls-v-box {
+  fill: #e0f0f9;
+  stroke: #8ac0db;
+  stroke-width: 1.5;
+}
+.ls-v-port {
+  fill: #0a4567;
+  stroke: #fff;
+  stroke-width: 3;
+}
+.ls-v-axis {
+  stroke: #90b1c6;
+  stroke-width: 2;
+  fill: none;
+}
+.ls-v-grid {
+  stroke: #d2e2eb;
+  stroke-width: 1;
+  fill: none;
+}
+.ls-v-response {
+  stroke: #068bb9;
+  stroke-width: 3.5;
+  fill: none;
+}
+.ls-v-marker {
+  stroke: #dd9c3e;
+  stroke-width: 2;
+  stroke-dasharray: 5 5;
+  fill: none;
+}
+.ls-v-sample {
+  fill: #1187b7;
+  stroke: #fff;
+  stroke-width: 2.5;
+}
+.ls-v-new-sample {
+  fill: #d69a49;
+  stroke: #fff;
+  stroke-width: 2;
+}
+.ls-v-bracket {
+  stroke: #0b8b8d;
+  stroke-width: 2;
+  fill: none;
+  marker-end: url(#ls-v-arrow);
+  marker-start: url(#ls-v-arrow);
+}
+.ls-v-standard {
+  fill: #fff;
+  stroke: #9bbfd3;
+  stroke-width: 2;
+}
+.ls-v-muted {
+  opacity: 0.29;
+}
+.ls-v-selected .ls-v-standard,
+.ls-v-selected .ls-v-box,
+.ls-v-selected .ls-v-paper {
+  stroke: #0689bd;
+  stroke-width: 3;
+  fill: #e7f5fb;
+}
+.ls-v-paper {
+  fill: #fff;
+  stroke: #a9c7d8;
+  stroke-width: 1.7;
+}
+.ls-v-faint {
+  opacity: 0.45;
+}
+.ls-v-bar {
+  fill: #064d76;
+}
+.ls-v-bar.secondary {
+  fill: #0da7ae;
+}
+.ls-v-region {
+  fill: #61b6df20;
+}
+.ls-stages {
+  display: flex;
+  align-items: stretch;
+  gap: 5px;
+  margin: 0 1px 12px;
+}
+.ls-stages > button {
+  border: 1px solid #d5e4ed;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  padding: 9px 8px;
+  border-radius: 7px;
+  background: #ffffff90;
+  color: #698294;
+  font-size: 9px;
+  line-height: 1.4;
+  text-align: left;
+}
+.ls-stages > button > span {
+  font-size: 9px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.ls-stages > button.is-active {
+  border-color: #77b9d9;
+  background: #fff;
+  color: #006d9f;
+  box-shadow: 0 2px 7px #0d6e8f08;
+}
+.ls-stage-caption {
+  border-left: 2px solid #23a8b0;
+  padding: 1px 10px;
+  min-height: 57px;
+  margin: 0 5px;
+}
+.ls-stage-caption > strong {
+  font-size: 11px;
+  font-weight: 650;
+}
+.ls-stage-caption > p {
+  font-size: 11px;
+  color: #698396;
+  line-height: 1.65;
+  margin: 4px 0 0;
+}
+.ls-schematic-label {
+  display: block;
+  font-size: 8px;
+  color: #8ca2af;
+  text-align: right;
+  margin: 11px 4px 0;
+}
+.ls-instruction-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 25px 27px;
+}
+.ls-instruction-grid > section {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.ls-instruction-grid > section:first-child {
+  border-right: 1px solid #e4ecf1;
+  padding-right: 20px;
+}
+.ls-instruction-grid > section:last-child {
+  padding-left: 20px;
+}
+.ls-section-index {
+  color: #0076af;
+  letter-spacing: 1.25px;
+  font-size: 9px;
+  font-weight: 750;
+}
+.ls-instruction-grid p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #537589;
+  margin: 11px 0 17px;
+  flex: 1;
+}
+.ls-primary,
+.ls-secondary {
+  border: 1px solid transparent;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+  min-height: 41px;
+}
+.ls-primary {
+  color: #fff;
+  background: #007eb9;
+}
+.ls-primary:hover {
+  background: #00679c;
+}
+.ls-secondary {
+  color: #3c6b84;
+  background: #fff;
+  border-color: #d1e1ea;
+}
+.ls-secondary:hover {
+  background: #f0f7fb;
+  border-color: #9bbfd4;
+}
+.ls-link-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 0;
+  font-size: 11px;
+  color: #0078b2;
+  font-weight: 600;
+  background: transparent;
+}
+.ls-reflect {
+  padding: 20px 24px;
+  margin: 0 27px 25px;
+  border: 1px solid #cfe6ed;
+  background: linear-gradient(120deg, #eef9f9, #f4f9fc);
+  border-radius: 10px;
+}
+.ls-reflect > p {
+  margin: 9px 0 0;
+  color: #225c70;
+  font-size: 13px;
+  line-height: 1.7;
+  font-weight: 500;
+}
+.ls-quiz {
+  border-top: 1px solid #e5edf2;
+  padding: 24px 27px;
+}
+.ls-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+}
+.ls-section-heading > span:last-child:not(:first-child) {
+  font-size: 9px;
+  color: #8b9da8;
+}
+.ls-quiz fieldset {
+  margin: 17px 0 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.ls-quiz legend {
+  font-size: 13px;
+  line-height: 1.6;
+  font-weight: 650;
+  margin-bottom: 12px;
+  padding: 0;
+}
+.ls-answer-options {
+  display: grid;
+  gap: 7px;
+}
+.ls-answer-options > label {
+  border: 1px solid #dce7ef;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 13px;
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #537186;
+  cursor: pointer;
+}
+.ls-answer-options > label:hover {
+  background: #f5fafd;
+}
+.ls-answer-options > label.is-selected {
+  background: #edf7fd;
+  border-color: #8dc7e1;
+  color: #076da2;
+}
+.ls-answer-options input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.ls-answer-options label:focus-within {
+  outline: 3px solid #0586c7;
+  outline-offset: 2px;
+}
+.ls-option-letter {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #cfdee8;
+  border-radius: 6px;
+  font-size: 10px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  background: #fff;
+}
+.is-selected .ls-option-letter {
+  color: #fff;
+  background: #007eb9;
+  border-color: #007eb9;
+}
+.ls-quiz-feedback {
+  font-size: 11px;
+  color: #8498a6;
+  line-height: 1.7;
+  margin-top: 12px;
+}
+.ls-quiz-feedback > p {
+  margin: 0;
+}
+.ls-quiz-feedback.is-correct,
+.ls-quiz-feedback.is-rethink {
+  padding: 13px 15px;
+  border: 1px solid #cfe7e1;
+  border-radius: 8px;
+  color: #47766e;
+  background: #f1faf6;
+}
+.ls-quiz-feedback.is-rethink {
+  border-color: #e6dbbd;
+  background: #fcf8ed;
+  color: #866d3c;
+}
+.ls-quiz-feedback strong {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+.ls-quiz-feedback small {
+  display: block;
+  margin-top: 8px;
+  opacity: 0.8;
+  font-size: 9px;
+}
+.ls-bottom-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+  padding: 19px 27px;
+  background: #fafcfd;
+  border-top: 1px solid #e5edf2;
+}
+.ls-bottom-nav button:first-child > svg {
+  transform: rotate(180deg);
+}
+.ls-review {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: transparent;
+  color: #7c929e;
+  padding: 9px 7px;
+  font-size: 10px;
+}
+.ls-review.is-reviewed {
+  color: #0d8c7e;
+}
+.ls-review-boundary {
+  text-align: center;
+  font-size: 9px;
+  line-height: 1.65;
+  color: #8ba0ad;
+  margin: 0;
+  background: #fafcfd;
+  padding: 0 27px 17px;
+}
+.ls-companion {
+  min-width: 0;
+  display: grid;
+  gap: 16px;
+}
+.ls-companion > section {
+  padding: 21px 19px;
+  border: 1px solid var(--ls-rule);
+  border-radius: 12px;
+  background: #fff;
+}
+.ls-companion h3,
+.ls-note-title {
+  display: block;
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 600;
+  letter-spacing: -0.35px;
+  margin: 9px 0;
+}
+.ls-narration-card {
+  background: linear-gradient(150deg, #fff, #f1f8fc) !important;
+}
+.ls-narration-card h3 {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+.ls-narration-card h3 > svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: #0083b7;
+  stroke-width: 1.6;
+}
+.ls-companion p {
+  color: #6c8697;
+  font-size: 11px;
+  line-height: 1.75;
+  margin: 9px 0 13px;
+}
+.ls-narration-card > label {
+  display: grid;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 650;
+  color: #5b788b;
+  margin-top: 12px;
+}
+.ls-narration-card select {
+  width: 100%;
+  min-width: 0;
+  padding: 9px;
+  border: 1px solid #d5e3eb;
+  border-radius: 7px;
+  color: #476d83;
+  background: #fff;
+  font-size: 10px;
+}
+.ls-narration-card > .ls-primary {
+  width: 100%;
+  margin-top: 16px;
+}
+.ls-reading-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  margin-top: 6px;
+}
+.ls-reading-actions button {
+  border: 1px solid #d8e5ed;
+  padding: 8px 3px;
+  border-radius: 6px;
+  color: #50778c;
+  background: #fff;
+  font-size: 10px;
+}
+.ls-narration-card .ls-narration-status {
+  color: #078581;
+  font-size: 10px;
+  margin: 13px 0 10px;
+}
+.ls-narration-card > small {
+  display: block;
+  font-size: 9px;
+  color: #8a9eaa;
+  line-height: 1.7;
+}
+.ls-bench-card .ls-section-heading > button {
+  padding: 6px 7px;
+  border: 1px solid #cddfe9;
+  border-radius: 5px;
+  background: #f8fbfd;
+  color: #4181a1;
+  font-size: 9px;
+}
+.ls-bench-checks {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 15px;
+}
+.ls-bench-checks > li {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+}
+.ls-check-symbol {
+  border: 1px solid #d4e1e9;
+  color: #99adb9;
+  border-radius: 50%;
+  width: 21px;
+  height: 21px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-size: 12px;
+}
+.is-met > .ls-check-symbol {
+  color: #0b9180;
+  border-color: #b4dacf;
+  background: #ecf8f2;
+}
+.is-unmet > .ls-check-symbol {
+  color: #ae8442;
+  border-color: #e6d5b5;
+  background: #fffaf1;
+}
+.ls-bench-checks strong {
+  display: block;
+  font-size: 11px;
+  line-height: 1.5;
+  font-weight: 650;
+}
+.ls-bench-checks small {
+  display: block;
+  color: #8c9da8;
+  font-size: 9px;
+  margin-top: 2px;
+}
+.ls-bench-checks .is-met small {
+  color: #198a7e;
+}
+.ls-bench-checks p {
+  margin: 5px 0 0;
+  font-size: 10px;
+  line-height: 1.65;
+}
+.ls-bench-card .ls-check-boundary {
+  border-top: 1px solid #e2ebf0;
+  padding-top: 12px;
+  margin: 16px 0 0;
+  font-size: 9px;
+  color: #8b9eaa;
+}
+.ls-note-card textarea {
+  display: block;
+  width: 100%;
+  min-height: 155px;
+  resize: vertical;
+  border: 1px solid #d6e4ec;
+  border-radius: 8px;
+  background: #fbfdfe;
+  color: #43667b;
+  padding: 12px;
+  font-size: 11px;
+  line-height: 1.8;
+  font-family: inherit;
+}
+.ls-note-card textarea::placeholder {
+  color: #a0b1bc;
+}
+.ls-note-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 7px;
+  font-size: 9px;
+  color: #8ea3b0;
+}
+.ls-reset-panel {
+  border: 1px solid #ddc79d;
+  background: #fffaf0;
+  padding: 22px;
+  border-radius: 12px;
+  margin: 22px 0 0;
+}
+.ls-reset-panel h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+}
+.ls-reset-panel p {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #8a7148;
+}
+.ls-reset-panel > div {
+  display: flex;
+  gap: 9px;
+}
+.ls-action-status {
+  color: #16897f;
+  font-size: 11px;
+  margin: 16px 0 0;
+}
+.ls-course-summary > small,
+.ls-lesson-button small,
+.ls-local-note,
+.ls-step-counter,
+.ls-schematic-label,
+.ls-section-heading > span:last-child:not(:first-child),
+.ls-review-boundary,
+.ls-narration-card > small,
+.ls-bench-checks small,
+.ls-bench-card .ls-check-boundary,
+.ls-note-footer {
+  color: #627c8d;
+}
+.ls-quiz-feedback {
+  color: #617b8d;
+}
+@keyframes ls-travel {
+  to {
+    stroke-dashoffset: -38;
+  }
+}
+@media (max-width: 1580px) {
+  .ls-layout {
+    grid-template-columns: 218px minmax(0, 1fr);
+    gap: 22px;
+  }
+  .ls-path {
+    grid-row: 1 / span 2;
+  }
+  .ls-companion {
+    grid-column: 2;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .ls-note-card {
+    grid-column: 1 / -1;
+  }
+  .ls-note-card textarea {
+    min-height: 125px;
+  }
+}
+@media (max-width: 1100px) {
+  .ls-layout {
+    grid-template-columns: 190px minmax(0, 1fr);
+    gap: 17px;
+  }
+  .ls-lesson-button {
+    gap: 8px;
+    padding: 13px 7px;
+  }
+  .ls-lesson-button strong {
+    font-size: 11px;
+  }
+  .ls-step-list button {
+    padding-inline: 6px;
+    font-size: 10px;
+  }
+  .ls-heading h1 {
+    font-size: 38px;
+  }
+  .ls-course-summary {
+    flex-basis: 180px;
+    padding: 17px;
+  }
+  .ls-step-top,
+  .ls-quiz,
+  .ls-bottom-nav {
+    padding-inline: 22px;
+  }
+  .ls-step-card > h2,
+  .ls-understand {
+    margin-inline: 22px;
+  }
+  .ls-step-meter {
+    margin-inline: 22px;
+  }
+  .ls-step-jump {
+    margin-inline: 22px;
+  }
+  .ls-reflect {
+    margin-inline: 22px;
+  }
+  .ls-instruction-grid {
+    padding-inline: 22px;
+  }
+  .ls-bottom-nav {
+    flex-wrap: wrap;
+  }
+  .ls-review {
+    order: 3;
+    flex-basis: 100%;
+  }
+}
+@media (max-width: 850px) {
+  .ls-heading {
+    margin-bottom: 25px;
+    gap: 15px;
+  }
+  .ls-heading h1 {
+    font-size: 34px;
+    letter-spacing: -1.2px;
+  }
+  .ls-heading > div > p {
+    font-size: 12px;
+  }
+  .ls-course-summary {
+    flex-basis: 155px;
+    padding: 15px;
+  }
+  .ls-course-summary > b {
+    font-size: 26px;
+  }
+  .ls-course-summary > small {
+    font-size: 9px;
+  }
+  .ls-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .ls-path {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    align-items: flex-start;
+    padding-bottom: 10px;
+  }
+  .ls-path-heading,
+  .ls-local-note,
+  .ls-step-list {
+    display: none;
+  }
+  .ls-lesson {
+    min-width: 205px;
+    max-width: 205px;
+    margin: 0;
+    border-color: var(--ls-rule);
+    background: #fff8;
+  }
+  .ls-lesson.is-current {
+    border-color: #83bdd8;
+    background: #edf7fd;
+  }
+  .ls-lesson-button {
+    padding: 13px 10px;
+  }
+  .ls-path-actions {
+    margin: 0;
+    min-width: 180px;
+  }
+  .ls-path-actions button {
+    padding: 9px;
+  }
+  .ls-main,
+  .ls-companion {
+    width: 100%;
+  }
+  .ls-step-top {
+    padding-top: 20px;
+  }
+  .ls-step-card > h2 {
+    font-size: 25px;
+  }
+  .ls-understand {
+    font-size: 13px;
+  }
+  .ls-visual-header > span {
+    max-width: 70%;
+  }
+  .ls-stages > button {
+    font-size: 9px;
+    padding: 9px 6px;
+  }
+}
+@media (max-width: 530px) {
+  .ls-heading {
+    align-items: flex-start;
+  }
+  .ls-heading h1 {
+    font-size: 29px;
+    letter-spacing: -1px;
+  }
+  .ls-heading .ls-eyebrow {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+  .ls-course-summary {
+    flex-basis: 108px;
+    padding: 11px;
+  }
+  .ls-course-summary > b {
+    font-size: 23px;
+  }
+  .ls-course-summary > b > span {
+    font-size: 13px;
+  }
+  .ls-course-summary > small:last-child {
+    display: none;
+  }
+  .ls-course-summary > small {
+    font-size: 8px;
+  }
+  .ls-step-top {
+    align-items: flex-start;
+    padding: 20px 18px 15px;
+  }
+  .ls-step-top .ls-eyebrow {
+    font-size: 8px;
+  }
+  .ls-step-counter {
+    font-size: 8px;
+  }
+  .ls-step-card > h2 {
+    font-size: 24px;
+    margin-inline: 18px;
+  }
+  .ls-understand,
+  .ls-step-meter {
+    margin-inline: 18px;
+  }
+  .ls-step-jump {
+    margin-inline: 18px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+  }
+  .ls-step-jump select {
+    min-height: 44px;
+    font-size: 12px;
+  }
+  .ls-visual {
+    padding-inline: 10px;
+  }
+  .ls-visual-header > span {
+    font-size: 9px;
+  }
+  .ls-visual-header > button {
+    font-size: 9px;
+    padding: 8px;
+  }
+  .ls-visual [data-ls-diagram] > svg {
+    min-height: 145px;
+  }
+  .ls-stages > button {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .ls-stage-caption {
+    min-height: 72px;
+  }
+  .ls-stage-caption > p {
+    font-size: 11px;
+  }
+  .ls-instruction-grid {
+    grid-template-columns: 1fr;
+    padding: 22px 18px;
+    gap: 22px;
+  }
+  .ls-instruction-grid > section:first-child {
+    padding: 0 0 21px;
+    border-right: 0;
+    border-bottom: 1px solid #e4ecf1;
+  }
+  .ls-instruction-grid > section:last-child {
+    padding-left: 0;
+  }
+  .ls-instruction-grid p {
+    margin: 8px 0 11px;
+    font-size: 12px;
+  }
+  .ls-reflect {
+    margin: 0 18px 22px;
+    padding: 16px;
+  }
+  .ls-quiz {
+    padding: 21px 18px;
+  }
+  .ls-quiz .ls-section-heading {
+    align-items: flex-start;
+  }
+  .ls-quiz .ls-section-heading > span:last-child {
+    font-size: 8px;
+    text-align: right;
+  }
+  .ls-quiz legend {
+    font-size: 13px;
+  }
+  .ls-answer-options > label {
+    font-size: 12px;
+  }
+  .ls-bottom-nav {
+    padding-inline: 18px;
+  }
+  .ls-review-boundary {
+    padding-inline: 18px;
+  }
+  .ls-companion {
+    grid-template-columns: 1fr;
+  }
+  .ls-note-card {
+    grid-column: auto;
+  }
+  .ls-companion > section {
+    padding: 23px;
+  }
+  .ls-companion p,
+  .ls-bench-checks strong,
+  .ls-bench-checks p {
+    font-size: 12px;
+  }
+  .ls-narration-card > label,
+  .ls-narration-card select {
+    font-size: 12px;
+  }
+  .ls-reading-actions button {
+    min-height: 40px;
+    font-size: 12px;
+  }
+  .ls-note-card textarea {
+    font-size: 13px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lesson-studio *,
+  .lesson-studio *::before,
+  .lesson-studio *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+@media print {
+  .ls-path,
+  .ls-narration-card,
+  .ls-bottom-nav,
+  .ls-reading-actions,
+  .ls-visual-header > button,
+  .ls-path-actions,
+  .ls-action-status {
+    display: none !important;
+  }
+  .ls-layout {
+    display: block;
+  }
+  .ls-step-card,
+  .ls-companion {
+    break-inside: auto;
+    box-shadow: none;
+  }
+  .ls-companion {
+    display: block;
+    margin-top: 18px;
+  }
+  .ls-heading h1 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 700px) {
+  .ls-step-card [data-ls-title] {
+    scroll-margin-top: 136px;
+  }
+  .ls-step-card {
+    scroll-margin-top: 136px;
+  }
+}

@@ -1,0 +1,221 @@
+<style>
+  .panel {
+    width: 48;
+    padding: 2.0 2.4;
+    display: flex;
+    flex-direction: column;
+    gap: 1.0;
+    background-color: #102a34;
+    border-radius: 2.0;
+    border-width: 0.04;
+    border-color: #1e1e1e;
+    opacity: 0.97;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15;
+    padding-bottom: 0.8;
+    border-bottom-width: 0.03;
+    border-color: #1e1e1e;
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .name {
+    font-size: 2.8;
+    font-weight: 300;
+    color: #f5f5f5;
+    letter-spacing: 0.06;
+  }
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 0.35;
+  }
+  .dot {
+    width: 0.45;
+    height: 0.45;
+    border-radius: 0.25;
+    background-color: #34d399;
+  }
+  .status-label {
+    font-size: 0.85;
+    font-weight: 500;
+    color: #34d399;
+    letter-spacing: 0.03;
+  }
+  .subtitle {
+    font-size: 1.35;
+    font-weight: 400;
+    color: #d4e9e8;
+    letter-spacing: 0.02;
+  }
+
+  .row {
+    display: flex;
+    gap: 0.6;
+  }
+  .row > * { flex: 1; }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.1 0.4;
+    border-radius: 0.9;
+    background-color: #20434d;
+    border-width: 0.03;
+    border-color: #2a2a2a;
+    font-size: 1.45;
+    font-weight: 500;
+    color: #d4d4d4;
+    letter-spacing: 0.01;
+  }
+
+  .btn-on {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.1 0.4;
+    border-radius: 0.9;
+    background-color: #222222;
+    border-width: 0.03;
+    border-color: #404040;
+    font-size: 1.45;
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: 0.01;
+  }
+
+  .btn-mic-off {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.1 0.4;
+    border-radius: 0.9;
+    background-color: #180808;
+    border-width: 0.03;
+    border-color: #2d1010;
+    font-size: 1.45;
+    font-weight: 500;
+    color: #f87171;
+    letter-spacing: 0.01;
+  }
+
+  .btn-mic-on {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.1 0.4;
+    border-radius: 0.9;
+    background-color: #081a0e;
+    border-width: 0.03;
+    border-color: #0d3320;
+    font-size: 1.45;
+    font-weight: 500;
+    color: #4ade80;
+    letter-spacing: 0.01;
+  }
+
+  .btn-yes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.1 0.4;
+    border-radius: 0.9;
+    background-color: #081a0e;
+    border-width: 0.03;
+    border-color: #0d3320;
+    font-size: 1.45;
+    font-weight: 500;
+    color: #4ade80;
+    letter-spacing: 0.01;
+  }
+
+  .btn-no {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.1 0.4;
+    border-radius: 0.9;
+    background-color: #180808;
+    border-width: 0.03;
+    border-color: #2d1010;
+    font-size: 1.45;
+    font-weight: 500;
+    color: #f87171;
+    letter-spacing: 0.01;
+  }
+
+  .btn-hidden {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 0.9;
+    background-color: #102a34;
+    border-width: 0;
+    border-color: #0c0c0c;
+    font-size: 0.01;
+    font-weight: 500;
+    color: #0c0c0c;
+    height: 0;
+    opacity: 0;
+  }
+
+  .line {
+    height: 0.03;
+    background-color: #1e1e1e;
+    margin-top: 0.2;
+    margin-bottom: 0.2;
+  }
+</style>
+
+<div class="panel">
+
+  <div class="header">
+    <div class="header-top">
+      <span class="name">Rhoda</span>
+      <div class="status">
+        <div class="dot"></div>
+        <span class="status-label" id="status-mode">Ready</span>
+      </div>
+    </div>
+    <span class="subtitle">Offline teaching / simulated instruments</span>
+  </div>
+
+  <div class="row">
+    <button id="btn-talk" class="btn-mic-off">Start Mic</button>
+    <button id="btn-lang" class="btn">Switch to Twi</button>
+  </div>
+
+  <div class="row">
+    <button id="btn-identify" class="btn">What is this?</button>
+    <button id="btn-summon" class="btn">Walk to me</button>
+  </div>
+
+  <div class="row">
+    <button id="btn-follow" class="btn">Follow Me</button>
+    <button id="btn-reset" class="btn">New Session</button>
+  </div>
+
+  <div class="line"></div>
+  <div class="row"><button id="btn-avatar" class="btn">Change avatar</button><button id="btn-wave" class="btn">Friendly gesture</button></div>
+  <div class="row"><button id="btn-motion" class="btn">Pause animation</button></div>
+  <span class="subtitle" id="lesson-title">Offline learning desk</span>
+  <span class="subtitle" id="lesson-position">1 / 6</span>
+  <span class="subtitle" id="lesson-body">Choose a lesson to begin.</span>
+  <div class="row"><button id="lesson-back" class="btn">Previous</button><button id="lesson-forward" class="btn">Next step</button></div>
+  <div class="row"><button id="lesson-read" class="btn">Read step aloud</button><button id="lesson-stop" class="btn">Stop speech</button></div><div class="row"><button id="lesson-pause" class="btn">Pause reading</button><button id="lesson-resume" class="btn">Resume reading</button></div><span class="subtitle" id="speech-state">Local voice / no AI request</span><div class="row"><button id="btn-station" class="btn">Oscilloscope station</button></div><div class="row"><button id="lesson-switch" class="btn">Change lesson</button></div>
+  <div class="line"></div>
+
+  <div class="row">
+    <button id="btn-allow" class="btn-hidden">Allow</button>
+    <button id="btn-deny" class="btn-hidden">Deny</button>
+  </div>
+
+</div>

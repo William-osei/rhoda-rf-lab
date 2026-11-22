@@ -1,0 +1,18 @@
+/* Isolated VNA iframe; the parent RHODA workspace supplies its app navigation. */
+.embedded-vna-nav { display: none; }
+.rhoda-embedded .sidebar, .rhoda-embedded .topbar, .rhoda-embedded .footer { display: none; }
+.rhoda-embedded .app-body { margin-left: 0; }
+.rhoda-embedded #workspace { padding: 20px 22px; }
+.rhoda-embedded .embedded-vna-nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; padding: 12px 20px; border-bottom: 1px solid #dce5eb; background: #fff; }
+.embedded-vna-nav > span { font-size: 9px; color: #53758b; font-weight: 700; letter-spacing: 1px; margin-right: auto; }
+.embedded-vna-nav button { padding: 10px 13px; border-radius: 6px; background: #eef4f8; color: #38637b; font-size: 12px; }
+.embedded-vna-nav button[aria-current=page] { color: #006fac; background: #e1f1fb; box-shadow: inset 0 -2px #0078b8; }
+.rhoda-embedded .page-heading { margin-bottom: 20px; }
+.rhoda-embedded .page-heading h1 { font-size: 30px; }
+@media(max-width:700px) {
+  .rhoda-embedded #workspace { padding: 18px 14px; }
+  .rhoda-embedded .embedded-vna-nav { padding: 10px 12px; gap: 6px; }
+  .embedded-vna-nav > span { width: 100%; margin-bottom: 4px; }
+  .embedded-vna-nav button { font-size: 11px; padding: 10px; }
+  .rhoda-embedded #bench-controls, .rhoda-embedded #display-card, .rhoda-embedded #bench-notes { scroll-margin-top: 18px; }
+}

@@ -1,0 +1,93 @@
+# Dependencies
+node_modules/
+.pnpm-debug.log*
+
+# Build outputs
+dist/
+desktop/bin/
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.local
+.env.production
+.env.*
+!.env.example
+
+# IDE files
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage/
+*.lcov
+
+# Temporary files
+.tmp/
+.temp/
+
+# Local SSL certificates
+.cert/
+*.pem
+*.key
+localhost+*.pem
+localhost+*-key.pem
+
+# Meta Spatial Editor exports
+public/gltf/generated/
+public/glxf/
+public/ui/
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# Python
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+.Python
+pip-log.txt
+
+# API keys / secrets
+*.secret
+secrets.json
+credentials.json
+service-account*.json
+
+# LibreOffice lock files
+.~lock.*
+
+# Documentation (sensitive/large — keep local only)
+docs/
+server/data/

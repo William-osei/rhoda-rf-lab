@@ -1,0 +1,87 @@
+*{box-sizing:border-box}body{margin:0;font:14px/1.55 'Segoe UI',sans-serif;color:#193a43;background:#d5dfe2}#scene-container{position:fixed;inset:0}#xr-shell{position:fixed;inset:0;pointer-events:none;z-index:10;padding:54px 22px 14px;display:flex;flex-direction:column;align-items:flex-start;gap:16px}header,.console,footer{pointer-events:auto}header{display:flex;align-items:center;gap:24px;width:100%;padding:12px 18px;background:#f8fbfa;border:1px solid #fff;border-radius:14px;box-shadow:0 6px 28px #15343c12;flex-shrink:0;backdrop-filter:blur(16px)}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#163e48}.brand-mark{display:block;width:37px;height:37px;object-fit:cover;border-radius:10px}.brand strong{letter-spacing:2px;font-size:15px}.brand strong span{display:block;font-size:8px;letter-spacing:1.5px;color:#526c73;margin-top:1px}nav{display:flex;gap:5px;margin-left:auto}nav a{padding:8px 12px;text-decoration:none;color:#506b74;font-size:13px;border-radius:8px}nav a.active{background:#e5f2ee;color:#076c62}nav a:hover{background:#e9f0f2}a{color:#087b71}button,select{font:inherit;border:1px solid #c4d5d8;border-radius:8px;padding:9px 11px;background:#fff;color:#264d56;cursor:pointer}button:hover{border-color:#2d9690;background:#edf8f4}button:disabled{opacity:.45;cursor:default}button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #269d93;outline-offset:3px}#focus-view{background:#173f49;color:#fff;border-color:#173f49;font-size:12px}.console{width:316px;min-height:0;overflow:auto;overscroll-behavior:contain;scroll-padding-block:20px;background:#f9fcfb;border:1px solid #fff;border-radius:16px;padding:22px;box-shadow:0 12px 40px #0a283922;backdrop-filter:blur(18px);scrollbar-width:thin;scrollbar-color:#b8d0ce transparent}.eyebrow{font-size:9px;letter-spacing:2px;color:#076f66;font-weight:700}h1{font-size:25px;line-height:1.2;letter-spacing:-.8px;margin:8px 0 12px}.studio-heading p{font-size:12px;color:#526c74;margin-bottom:14px}h2{font-size:15px;font-weight:650;margin:0}.section-heading{display:flex;gap:9px;align-items:center;margin-bottom:15px}.section-number{font-size:10px;letter-spacing:1px;color:#237064;background:#e8f3ef;padding:5px 7px;border-radius:6px}.control-section{border-top:1px solid #dce7e7;padding-top:19px;margin-top:19px}label{font-size:11px;font-weight:600;color:#506a72}select{width:100%;margin:6px 0 8px;font-size:12px;min-height:40px}p{color:#506a72}#avatar-description{font-size:11px;line-height:1.6;margin:4px 0 10px}#avatar-status{font-size:10px;color:#52726c;min-height:30px}#xr-status{font-size:11px;color:#0c7469;margin:0;overflow-wrap:anywhere}.controls{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.controls button{flex:1;min-width:0;font-size:11px;padding:9px 5px;min-height:38px}.view-buttons button[aria-pressed=true]{background:#157e75;border-color:#157e75;color:white;box-shadow:0 2px 7px #167e7530}.switch-row{display:flex;align-items:center;gap:8px;min-height:36px;color:#305b60;font-size:12px}.switch-row input{accent-color:#0e897c;width:16px;height:16px}#robot-motion-status{font-size:10px;margin:2px 0}.text-button{border:0;background:transparent;padding:2px 0;color:#216f65;font-size:10px;text-decoration:underline;text-underline-offset:3px}.subtle-link{font-size:10px;color:#536d75}#lesson-text{font-size:12px;line-height:1.75;color:#46676f;margin-top:10px}#lesson-count{font-size:9px;letter-spacing:1px;color:#0a7366;margin-top:9px}#lesson-source{font-size:11px}details{border-top:1px solid #dce7e7;margin-top:19px;padding-top:15px}summary{font-size:12px;font-weight:600;cursor:pointer}details p{font-size:11px;line-height:1.65}.scene-note{position:absolute;right:30px;bottom:82px;color:#ecf8f3;text-shadow:0 1px 4px #0c2635;letter-spacing:.3px;font-size:12px}.scene-note span:last-child{display:block;font-size:10px;opacity:.85;margin:4px 0 0 16px}.live-dot{display:inline-block;width:6px;height:6px;background:#85dfc1;border-radius:50%;margin-right:9px}footer{display:flex;gap:20px;max-width:100%;flex-shrink:0;margin-top:auto;padding:10px 16px;background:#153842ed;color:#d0e9e5;border-radius:10px;font-size:10px;overflow-wrap:anywhere}footer span+span{border-left:1px solid #547477;padding-left:16px}#xr-loading{max-width:600px}.focus .console,.focus .scene-note{display:none}.immersive #xr-shell{display:none}@media(max-width:800px){#xr-shell{padding:50px 12px 10px;gap:10px}header{padding:9px 12px;gap:10px;flex-wrap:wrap}.brand strong span{display:none}nav{order:3;width:100%;margin:0;justify-content:space-between}nav a{font-size:11px;padding:6px 7px}#focus-view{margin-left:auto}.console{width:290px;max-width:calc(100vw - 24px);padding:18px;max-height:calc(100dvh - 245px)}.scene-note{display:none}footer{gap:10px;font-size:9px;padding:8px 10px}footer span:nth-child(2){display:none}footer span+span{padding-left:8px}#xr-loading{max-width:200px}.controls button{min-height:44px}.text-button{min-height:36px}}
+
+.station-intro,#station-status,#speech-status{font-size:11px;line-height:1.65}#station-practice{width:100%;font-size:12px}#station-dialog{width:min(1300px,96vw);height:92dvh;max-height:92dvh;padding:0;border:1px solid #abc9c6;border-radius:16px;background:#f5faf8;color:#193a43}#station-dialog::backdrop{background:#102d3b99;backdrop-filter:blur(7px)}.station-dialog-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 22px;border-bottom:1px solid #cee0df}.station-dialog-header h2{margin-top:4px}#station-frame{width:100%;height:calc(100% - 87px);border:0;background:#f5faf8}
+
+#station-dialog[open]{display:flex;flex-direction:column}.station-dialog-header{flex-shrink:0}#station-frame{flex:1;min-height:0;height:auto}
+
+.station-narrator{flex-shrink:0;padding:14px 22px;background:#edf6f2;border-bottom:1px solid #cde0dc;max-height:32vh;overflow:auto}.station-narrator h3{margin:3px 0 8px;font-size:16px}.station-narrator p{font-size:13px;margin:6px 0}.station-narrator .controls{margin:8px 0;max-width:660px}#station-frame{min-height:200px}#station-speech-status{font-size:11px;color:#147b72}@media(max-width:600px){.station-narrator{padding:10px 14px;max-height:38vh}.station-dialog-header{padding:12px 14px}.station-narrator p{font-size:12px}}
+
+#station-companion{flex:0 0 76px;width:76px;height:104px;overflow:hidden;border-radius:12px;background:#d7e5e6}#station-companion canvas{width:76px!important;height:104px!important}
+.lesson-intro{font-size:11px;line-height:1.65}.lesson-part-title{margin:8px 0 2px;font-size:14px;line-height:1.4;color:#214e54}.lesson-progress progress,#movement-progress{width:100%;height:7px;accent-color:#168879;border:0}.lesson-progress p{font-size:10px;margin:5px 0;color:#47746e}.lesson-progress>button{width:100%;font-size:11px;margin-top:4px}.lesson-progress>button[aria-pressed=true],.tour-navigation button[aria-pressed=true]{background:#ddf0e8;border-color:#8ebdae;color:#0c695a}.lesson-outline,.lesson-record{margin:12px 0;padding-top:10px}.lesson-chapters{list-style:none;margin:10px 0;padding:0;display:grid;gap:5px}.chapter-button{display:grid;grid-template-columns:23px 1fr;gap:3px 8px;align-items:center;width:100%;text-align:left;padding:9px;font-size:11px;background:#f9fcfb;min-height:43px}.chapter-button[aria-current=step]{border-color:#2b9484;background:#e0f2e9;box-shadow:inset 3px 0 #168879}.chapter-number{grid-row:1/3;display:grid;place-items:center;border-radius:50%;width:23px;height:23px;background:#e5eeeb;color:#287b70;font-size:10px;font-weight:700}.chapter-title{line-height:1.35;color:#31575d}.chapter-state{font-size:9px;color:#4d7970;text-transform:capitalize}.lesson-outline p,.station-outline p{font-size:10px;line-height:1.5}.movement-options{display:grid;grid-template-columns:1fr 1fr;gap:8px}.movement-options select{font-size:10px;padding:8px 6px}.movement-hint,#movement-status{font-size:10px;line-height:1.6;margin:5px 0}
+.station-narrator{max-height:38vh;padding:12px 20px;scrollbar-width:thin;overscroll-behavior:contain}.station-guide-heading{display:flex;align-items:center;gap:14px}.station-guide-heading>div:last-child{flex:1;min-width:0}.station-guide-heading h3{font-size:14px;margin:3px 0;color:#527670}.station-guide-heading h4{font-size:17px;line-height:1.35;margin:3px 0 8px;color:#1a4f50}.station-progress{max-width:560px}.station-progress p{margin:3px 0;font-size:10px}.station-transcript{margin:9px 0;padding:8px 0 0;border-color:#d1e4dc}.station-transcript summary{font-size:11px;color:#3d7167}.station-transcript p{margin:8px 0;max-width:1030px;line-height:1.7}.station-reading-toolbar{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.station-reading-toolbar .speech-controls{max-width:450px;flex:1;min-width:280px;margin:7px 0}.station-reading-toolbar #station-read{flex:2;background:#147e71;color:white;border-color:#147e71}.station-reading-options{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.station-reading-options select{width:130px;margin:0;font-size:11px;min-height:36px;padding:6px 8px}.station-reading-options .switch-row{font-size:11px}.station-narrator .tour-navigation{max-width:660px;margin:5px 0}.station-narrator .tour-navigation #station-complete{flex:1.5}.station-outline{margin:8px 0;padding:8px 0 0}.station-outline summary{font-size:11px}.station-outline .lesson-chapters{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1040px}.station-outline .text-button{font-size:11px;min-height:30px}.station-narrator #station-speech-status{margin:7px 0 0;font-size:10px}
+@media(max-width:600px){.station-narrator{padding:10px 12px;max-height:45vh}.station-guide-heading{gap:9px}#station-companion{flex-basis:44px;width:44px;height:60px}#station-companion canvas{width:44px!important;height:60px!important}.station-guide-heading .eyebrow{font-size:8px;letter-spacing:1px}.station-guide-heading h3{font-size:10px;line-height:1.35;margin:2px 0}.station-guide-heading h4{font-size:13px;margin:3px 0}.station-progress progress{height:5px}.station-progress p{font-size:9px}.station-reading-toolbar{gap:2px;display:block}.station-reading-toolbar .speech-controls{min-width:0;max-width:none;gap:4px;margin:6px 0}.station-reading-toolbar .speech-controls button{font-size:10px;min-height:38px;padding:6px 4px}.station-reading-options{gap:6px}.station-reading-options>label:first-child{display:none}.station-reading-options select{width:112px;min-height:32px;font-size:10px}.station-reading-options .switch-row{min-height:32px;font-size:10px}.station-narrator .tour-navigation{margin:5px 0;gap:4px}.station-narrator .tour-navigation button{font-size:10px;min-height:38px;padding:6px 4px}.station-outline .lesson-chapters{grid-template-columns:1fr 1fr}.station-transcript summary,.station-outline summary{font-size:10px}.station-transcript p{font-size:12px}.station-narrator #station-speech-status{font-size:9px;margin-top:4px}.station-dialog-header .eyebrow{font-size:8px;letter-spacing:1px}.station-dialog-header h2{font-size:13px}#station-close{font-size:11px;min-height:40px;padding:7px 9px}}
+
+.scene-note{background:#153842;padding:10px 14px;border-radius:10px;box-shadow:0 4px 18px #0a283922}
+
+#performance-panel{margin-bottom:8px}#perf-metrics{display:grid;grid-template-columns:1fr 1fr;gap:6px 8px;font-size:10px;line-height:1.5}#perf-metrics dt{color:#43646b}#perf-metrics dd{margin:0;text-align:right;overflow-wrap:anywhere;color:#173f49}#performance-panel .perf-note,#perf-quality-status,#perf-state{font-size:10px;line-height:1.6}#performance-panel .controls button{min-height:40px}#performance-panel[open]{scroll-margin-block:16px}
+
+.animation-preview{border-top:1px solid #dce7e7;margin-top:12px;padding-top:14px}.animation-preview p{font-size:10px;line-height:1.6;margin:5px 0}.animation-preview select{max-width:100%}#companion-animation-status{min-height:32px;color:#286b62;overflow-wrap:anywhere}
+
+/* Keep the guided lesson and embedded instrument in separate, predictable panes. */
+#station-dialog{width:min(1600px,96vw);height:min(92dvh,1000px);max-width:calc(100vw - 24px);max-height:calc(100dvh - 24px);margin:auto;overflow:hidden}
+#station-dialog[open]{display:grid;grid-template-rows:auto auto minmax(0,1fr)}
+.station-dialog-header{min-width:0;padding:13px clamp(14px,2vw,24px)}
+.station-narrator{display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,1.08fr);grid-template-areas:"guide toolbar" "transcript navigation" "transcript outline" "status status";align-items:start;gap:4px clamp(14px,2vw,28px);min-width:0;max-height:none;overflow:visible;padding:10px clamp(14px,2vw,24px);overscroll-behavior:auto}
+.station-guide-heading{grid-area:guide;min-width:0;gap:11px}
+#station-companion{flex-basis:58px;width:58px;height:80px}
+#station-companion canvas{width:58px!important;height:80px!important}
+.station-guide-heading h3{margin:2px 0;font-size:12px}
+.station-guide-heading h4{margin:2px 0 5px;font-size:15px;line-height:1.3}
+.station-progress{max-width:100%}
+.station-progress progress{display:block;width:100%;height:6px}
+.station-progress p{margin:2px 0;font-size:9px}
+#station-transcript{grid-area:transcript;align-self:start;min-width:0;margin:3px 0;padding:6px 0 0}
+.station-transcript summary,.station-outline summary{min-height:28px;display:flex;align-items:center}
+.station-transcript p{margin:3px 0 0;max-width:none;line-height:1.5;font-size:12px}
+.station-reading-toolbar{grid-area:toolbar;align-self:center;display:grid;grid-template-columns:minmax(0,1fr);min-width:0;gap:6px}
+.station-reading-toolbar .speech-controls{width:100%;min-width:0;max-width:none;margin:3px 0;gap:5px}
+.station-reading-toolbar .speech-controls button{min-height:38px;padding:7px 8px}
+.station-reading-options{gap:6px 8px}
+.station-reading-options select{width:120px}
+.station-narrator .tour-navigation{grid-area:navigation;display:flex;max-width:none;width:100%;gap:6px;margin:0}
+.station-narrator .tour-navigation button{min-height:38px;padding:6px 8px}
+.station-outline{grid-area:outline;min-width:0;margin:0;padding:3px 0 0}
+.station-outline .lesson-chapters{grid-template-columns:repeat(3,minmax(0,1fr));max-width:none;margin:5px 0;gap:4px}
+.station-outline .chapter-button{min-height:38px;padding:6px;font-size:10px}
+.station-narrator #station-speech-status{grid-area:status;min-height:0;margin:0;font-size:10px}
+#station-frame{display:block;width:100%;height:100%;min-height:0;border:0;background:#f7fafc}
+@media(max-width:900px){
+ #station-dialog[open]{grid-template-rows:auto minmax(0,1fr) minmax(180px,1.15fr)}
+ .station-narrator{grid-template-columns:minmax(0,1fr);grid-template-areas:"guide" "transcript" "toolbar" "navigation" "outline" "status";align-content:start;gap:5px;padding:9px 14px;overflow-y:auto;overscroll-behavior:contain}
+ .station-guide-heading{gap:9px}
+ #station-companion{flex-basis:48px;width:48px;height:66px}
+ #station-companion canvas{width:48px!important;height:66px!important}
+ .station-guide-heading h4{font-size:14px}
+ .station-reading-toolbar{display:block}
+ .station-reading-toolbar .speech-controls{gap:4px;margin:4px 0}
+ .station-reading-options{margin-top:3px}
+ .station-outline .lesson-chapters{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:600px){
+ #station-dialog{width:100vw;height:100dvh;max-width:none;max-height:none;margin:0;border-radius:0;border-width:0}
+ #station-dialog[open]{grid-template-rows:auto minmax(0,1fr) minmax(170px,1fr)}
+ .station-dialog-header{padding:10px 12px;gap:8px}
+ .station-dialog-header .eyebrow{font-size:8px;letter-spacing:1px}
+ .station-dialog-header h2{font-size:13px}
+ #station-close{min-height:38px;padding:6px 9px;font-size:11px;white-space:nowrap}
+ .station-narrator{padding:8px 11px;gap:4px}
+ .station-guide-heading .eyebrow{font-size:8px;letter-spacing:1px}
+ .station-guide-heading h3{font-size:10px}
+ .station-guide-heading h4{font-size:12px}
+ .station-progress p{font-size:9px}
+ .station-transcript p{font-size:11px;line-height:1.45}
+ .station-reading-toolbar .speech-controls button,.station-narrator .tour-navigation button{min-height:36px;padding:5px 4px;font-size:10px}
+ .station-reading-options select{width:108px;min-height:32px;font-size:10px}
+ .station-reading-options .switch-row{min-height:32px;font-size:10px}
+}
+@media(max-height:650px){
+ #station-dialog[open]{grid-template-rows:auto minmax(0,1fr) minmax(130px,1fr)}
+ .station-dialog-header{padding-block:7px}
+ .station-narrator{padding-block:6px;gap:2px 10px}
+ #station-companion{display:none}
+ .station-guide-heading h4{margin-bottom:2px}
+ .station-transcript{margin:1px 0;padding-top:3px}
+ .station-transcript p{margin-top:1px;line-height:1.35}
+ .station-outline{padding-top:0}
+ .station-outline .lesson-chapters{margin:2px 0}
+}
